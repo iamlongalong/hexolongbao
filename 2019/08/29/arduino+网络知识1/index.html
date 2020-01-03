@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content>
+  <meta name="author" content="longalong">
+  <meta name="keywords" content>
+  <title>网络知识+arduino思考 ~ longbao</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css">
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css">
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css">
+
+
+  
+
+
+
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>longbao</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">Archives</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">Categories</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">Tags</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/default.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              <p class="mt-3">Thursday, August 29th 2019, 2:01 pm</p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="知识记录"><a href="#知识记录" class="headerlink" title="知识记录"></a>知识记录</h2><ul>
+<li>防火墙和网关和路由器和交换机的区别：<code>防火墙（firewall）</code>最基础，就是简单的是否允许ip包通过的一个机制，因此应当作为最外层安全防御；<code>网关（gateway）</code>是一个功能跟复杂和全面的安全机制，网关本身是运行着操作系统的，因此可以接收所有网路传输过来的数据，并能够进行解析，因此能够做更多深层次的数据过滤；<code>路由器（router）</code>本身功能比较基础，就是用于数据转发，可以给连入设备分配ip，因此可以用于组建局域网；还有一个概念<code>交换机（switch）</code>，用于拓展网口，做数据分发，可以简单理解成拓展坞。虽然四者从概念上有区分，但生活中，我们基本都叫路由器，因为我们购买的路由器都涵盖了上述四个功能，但是我们对防火墙和网关的直观印象比较弱，而对“路由”功能印象更直观，所以常说的家用路由器，功能基本都是涵盖的。在专业的网络搭建中，功能更加分化，因此会分化出不同的物理机，不同的机器做专业的事情。<ul>
+<li>补充一个<code>调制解调器（Mordem）</code>是一个物理层的设备，在往年用电话线拨号时，它的作用是将电话线传来的模拟信号转化成计算机能够识别的数字信号（或相反），这些年使用光纤后，它的作用是把光纤传来的光信号转化成计算机能够识别的数字电信号（或相反）。</li>
+<li>再补充一个<code>集线器（Hub）</code>，可以理解成一个低配版的路由器和交换机的杂交种吧，具有多端口，可以用作拓展设备网口，也能够全局广播，建立连接后进行数据转发。</li>
+</ul>
+</li>
+</ul>
+<h2 id="我的尝试"><a href="#我的尝试" class="headerlink" title="我的尝试"></a>我的尝试</h2><h3 id="arduino项目"><a href="#arduino项目" class="headerlink" title="arduino项目"></a>arduino项目</h3><h4 id="对arduino的理解"><a href="#对arduino的理解" class="headerlink" title="对arduino的理解"></a>对arduino的理解</h4><ul>
+<li>arduino是一个开源的单片机平台，有很多版本，例如最常用的UNO板和nano板，都是基于AVR8位单片机的，属于最通用的单片机平台（无太多专用功能，全是通用I/O口），还有一些附带有专用功能的版本，例如esp8266开发板（非官方），可用于网络连接，还有很多其他的版本，详细版本间的比较可以参考：<a href="https://www.arduino.cc/en/Products/Compare" target="_blank" rel="noopener">arduino官网比较</a>。</li>
+<li>有非常多的开源库，例如最基础的servo（用于控制伺服电机），softwareSerial（用于软串口通信），wire（用于IIC通信）等等。库列表可以参考官方库，开源项目可以参考：<a href="https://github.com/search?q=arduino" target="_blank" rel="noopener">github上的搜索结果</a></li>
+<li>库的作用是，当我们在实现一个功能时，可以非常简单地调用api，而不是要配置各种寄存器（这是跟51等底层单片机最大的区别之一），因此arduino的编程大多数时候是<code>面向库编程</code>的，再加上各个库基本都提供了完善的使用案例，因此arduino的编程大多数时候也是<code>面向复制粘贴编程</code>，这大大降低了arduino的编程难度，因此，在学习arduino时，非常重要的两个过程：①寻找实现某功能的库，②读懂例程的逻辑。</li>
+<li>当我们脑海中能建立起功能与库的对照表时，arduino就学会了45%了，当我们能熟练使用一些常用的库进行实践时，我们就学会了arduino的90%了。另外10%？当然还是要留给功能实现的源码的。在能使用库进行实践后，若想进一步深入学习嵌入式编程，当然还是要读一下源码，至少大致知道实现的逻辑，也能帮助自己提升对C语言（C++）的理解。</li>
+<li>是否进入那个10%，就需要看自己的长期规划了，对于绝大多数人而言，是不需要非常深入地认识的，例如我。</li>
+<li>我学习arduino的目的有三个，其一，认识物联网编程的特点，其二，实现一些有趣的功能，其三，培养编程的思维和一些习惯。因此，我不会再特别深入地去学习arduino库的实现方式，有这个时间的话，我会再去使用以下51，或者玩一下stm32做一些简单的实践，以及返回去学习c语言基础。</li>
+</ul>
+<h4 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h4><ul>
+<li>这是一个基础的智能家居实现，将使用<code>arduino UNO r3</code>作为传感器的主控板，使用wifi模块连接家庭网关，将数据传输到服务器上，服务器将数据进行持久化，并使用web作为面板，可以查看传感器传回的一些数据，也可以控制电机的转动。</li>
+<li>整个项目</li>
+</ul>
+<h4 id="功能需求"><a href="#功能需求" class="headerlink" title="功能需求"></a>功能需求</h4><h4 id="需要的材料及软件"><a href="#需要的材料及软件" class="headerlink" title="需要的材料及软件"></a>需要的材料及软件</h4><h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><h4 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h4><h4 id="总结展望"><a href="#总结展望" class="headerlink" title="总结展望"></a>总结展望</h4><hr>
+## 一些问题
+
+<ul>
+<li>学习痛苦的根源在于两个方面：①不知道自己要学啥。②不知道自己在学的是啥。要解决这两个问题，首先要保持一个习惯：先从宏观上了解（甚至是熟悉）所学内容的框架，再根据框架的要求去学习细节知识。其次，要给自己制定一些清晰的小目标，小目标能让自己不忘记现在在做什么，例如“今天学习ai的使用，并写一篇博客总结自己的理解”“今天设计出自己的arduino的demo程序框架，并用代码实现，同时写一篇博客”，其实也可以说是“成果管理”。</li>
+<li>小目标很容易制定，因为成本小，见效快，就算失败也能承受，但是大目标却很难制定，因为不确定的因素太多了，我们很容易避而不谈大的目标。虽然直面这个问题很痛苦，但是还是应当要面对这个问题，因为人无远虑必有近忧，该来的问题总会来的，我也应当要正面这个问题才是。今天内，写一个思考的博客。</li>
+</ul>
+<h2 id="一些想法"><a href="#一些想法" class="headerlink" title="一些想法"></a>一些想法</h2><ul>
+<li>学习arduino的路径，应当从三个方面进行。其一，应当学习物联网编程的一些框架和环境，例如以c语言或c++为编程语言，使用keil或arduino为IDE，使用串口通信较为常见，需要先烧录再运行，flash等资源较少，使用很多的传感器进行数据收集（例如光电、压电、声音、超声、温度、湿度、加速度等），使用很多执行器进行交互（例如继电器、servo、motor、灯光、数码管、点阵、LCD等等），同时还有一些用于通信（例如串口txrx（蓝牙、wifi、lora、gprs等）、外部寄存器（串入并出等等）），要熟悉物联网编程的协议（例如http、mqtt），以及服务器端api的创建，还有客户端的创建（web或app或微信小程序），三个层级的数据交互方式（通信方式、数据格式等）。</li>
+<li>其二，要训练编程思维，如何拆解程序成各个模块，各个模块中应当先用什么语句再用什么语句，使用外部库时应当有些什么注意事项。这部分十分重要，这不仅是对物联网编程有意义，对其他的任何编程都非常有价值，这其实就是搞清楚程序是怎样一步步实现的。因此要多从思路方面进行思考，先想清楚应该要怎样做，模型是怎样的，可以采用阅读他人某功能的代码时做一些批注，自己写的代码也同样做很多批注，还可以采用一些图形化的编程工具，帮助从宏观上认识编程的各个模块都有些什么作用，而不是陷入细节陷阱中去。</li>
+<li>其三，要熟练编程的各个细节，例如熟悉语言的规范（要在编程过程中不断去规范自己的写法，不断去总结语言的特性），要熟练使用一些非常常用的库（要先明白这些库的应用场景，再熟练使用这些库的api，最后再思考库的实现方式，可以的话，阅读源码），要熟练处理遇到的问题，例如在写代码过程中遇到了问题该如何去处理，陷入思路阻塞应该怎么办，心情烦躁该怎么办。</li>
+<li>【项目思考】由于人的记忆力有限（尤其是我这种金鱼人），经常不记得自己当天做过什么，完成了哪些事情，还需要完成那些事情，将来还要做什么事情，因此一个todolist是非常重要的，现阶段也有大量的todolist的工具，例如最基础的每日用<code>记事本</code>写下要做的事，做完就删掉，这在做一些非常细节且杂乱的事情时可以使用，做一项细节时可以使用，再例如用<code>便签</code>功能，也可以提醒我们还有些啥要做。如果想要跨平台使用，可以使用一些商用软件，例如<code>teambition</code>、<code>trello</code>，<code>滴答清单</code>，前两者都是跨国的，使用起来也非常不错。但是嘞，这些平台虽然都非常完善，前两者用于项目管理，后者用于日常清单管理都非常不错，但是对于我个人而言，还是有些缺憾，我希望我做过的事情能够有比较完善地被记录和统计，例如今天在“学习”上花了12个小时，在“arduino”上花了5个小时，中午做了“土豆胡萝卜腊肠焖饭”用时20分钟，这些统计便于我分析自己的时间是如何使用的，在做一件事的效率上有哪些地方值得改进，以及自己“做过哪些有趣的事”。我应当给自己平常做的事情划分一个标准，做的哪些事属于什么范围，例如“学习”–“js”“arduino”“linux”“raspi”“front-end”“accounting”“auditing”，“生活”–“做饭”“运动”等等。这可以做为一个项目，一个web的项目，平常可以用于制定计划，一段时间可以用于分析计划完成情况。</li>
+</ul>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            
+              <p>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B">编程</a>
+                  &nbsp;
+                
+                  <a class="hover-with-bg" href="/categories/other">other</a>
+                  &nbsp;
+                
+              </p>
+            
+            <p>
+              <i class="iconfont icon-tag"></i>
+              
+                <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0">学习</a>
+              
+                <a class="hover-with-bg" href="/tags/arduino">arduino</a>
+              
+              <span id="/2019/08/29/arduino+网络知识1/" class="visitors leancloud_visitors" data-flag-title="网络知识+arduino思考">
+                <em id="visitors-text" class="post-meta-item-text"></em>
+                <i id="visitors-count"></i>
+              </span>
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "网络知识+arduino思考&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 60,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $('#post').find('img').each(
+      function () {
+        var _this = $(this);
+        var _src = _this.attr("src");
+        _this.wrap('<a data-fancybox="images" href="' + _src + '" ></a>');
+      }
+    );
+  </script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content>
+  <meta name="author" content="longalong">
+  <meta name="keywords" content>
+  <title>arduino小车项目尝试 ~ longbao</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css">
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css">
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css">
+
+
+  
+
+
+
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>longbao</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">Archives</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">Categories</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">Tags</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/default.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              <p class="mt-3">Friday, August 30th 2019, 2:01 pm</p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="知识记录"><a href="#知识记录" class="headerlink" title="知识记录"></a>知识记录</h2><ul>
+<li>室内定位技术当前还没有形成完善的技术体系，整体来说，有<code>wifi室内定位``蓝牙室内定位``超宽带``RFID``超声波``红外</code>等几种，各有应用场景，但从精度上来说，都还是有一定局限，当前的应用主要集中在商场导航、停车场定位、库房货物定位等方面，但在精确定位上的应用还十分匮乏，例如用于机器人位置感知等。近场导航用机器人视觉的方案更可靠一些。参考资料：<a href="http://m.elecfans.com/article/586741.html?fromtype=app" target="_blank" rel="noopener">10种室内定位技术</a>。</li>
+<li>在调试PWM时发现一个现象，我一开始用的是A0和A1作为使能端输出口，但是发现怎么改变analogWrite的值速度都没有变，并且，只有当值大于等于128时，电机才能转动，所以想找到问题的原因。最终通过A0输出，A1输入并用串口输出，发现了问题所在：A0-A5是模拟信号输入口，并不能直接输出模拟信号，而且analogWrite的输出寄存器为8位，也就意味着将转化为二进制的格式，当值小于128时，二进制数的首位为0，输出直接为0，大于等于时，输出为1。</li>
+<li>为什么analogWrite的值为0-255，而analogRead的值为0-1023呢？是由于前者为8位寄存器，后者为10位寄存器。（具体内容估计得查看硬件参数了）。</li>
+</ul>
+<h2 id="一些尝试"><a href="#一些尝试" class="headerlink" title="一些尝试"></a>一些尝试</h2><h3 id="arduino项目（继8-29）"><a href="#arduino项目（继8-29）" class="headerlink" title="arduino项目（继8.29）"></a>arduino项目（继8.29）</h3><h4 id="对arduino的理解"><a href="#对arduino的理解" class="headerlink" title="对arduino的理解"></a>对arduino的理解</h4><ul>
+<li>arduino是一个开源的单片机平台，有很多版本，例如最常用的UNO板和nano板，都是基于AVR8位单片机的，属于最通用的单片机平台（无太多专用功能，全是通用I/O口），还有一些附带有专用功能的版本，例如esp8266开发板（非官方），可用于网络连接，还有很多其他的版本，详细版本间的比较可以参考：<a href="https://www.arduino.cc/en/Products/Compare" target="_blank" rel="noopener">arduino官网比较</a>。</li>
+<li>有非常多的开源库，例如最基础的servo（用于控制伺服电机），softwareSerial（用于软串口通信），wire（用于IIC通信）等等。库列表可以参考官方库，开源项目可以参考：<a href="https://github.com/search?q=arduino" target="_blank" rel="noopener">github上的搜索结果</a></li>
+<li>库的作用是，当我们在实现一个功能时，可以非常简单地调用api，而不是要配置各种寄存器（这是跟51等底层单片机最大的区别之一），因此arduino的编程大多数时候是<code>面向库编程</code>的，再加上各个库基本都提供了完善的使用案例，因此arduino的编程大多数时候也是<code>面向复制粘贴编程</code>，这大大降低了arduino的编程难度，因此，在学习arduino时，非常重要的两个过程：①寻找实现某功能的库，②读懂例程的逻辑。</li>
+<li>当我们脑海中能建立起功能与库的对照表时，arduino就学会了45%了，当我们能熟练使用一些常用的库进行实践时，我们就学会了arduino的90%了。另外10%？当然还是要留给功能实现的源码的。在能使用库进行实践后，若想进一步深入学习嵌入式编程，当然还是要读一下源码，至少大致知道实现的逻辑，也能帮助自己提升对C语言（C++）的理解。</li>
+<li>是否进入那个10%，就需要看自己的长期规划了，对于绝大多数人而言，是不需要非常深入地认识的，例如我。</li>
+<li>我学习arduino的目的有三个，其一，认识物联网编程的特点，其二，实现一些有趣的功能，其三，培养编程的思维和一些习惯。因此，我不会再特别深入地去学习arduino库的实现方式，有这个时间的话，我会再去使用以下51，或者玩一下stm32做一些简单的实践，以及返回去学习c语言基础。</li>
+</ul>
+<h4 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h4><ul>
+<li><p>这是一个基础的智能家居实现，将使用<code>arduino UNO r3</code>作为传感器的主控板，使用wifi模块连接家庭网关，将数据传输到服务器上，服务器将数据进行持久化，并使用web作为面板，可以查看传感器传回的一些数据，也可以控制电机的转动。</p>
+</li>
+<li><p>整个项目可以划分为几个小的部分，用于实现几个不同的场景，例如：①小车驱动的移动平台，可以实现在房间内移动。②上下楼移动平台，可以实现自动上下楼梯，并携带一定货物。③环境量收集，用于收集是否下雨，气温，光照，土壤湿度等，并上传至服务器存档，可用于控制灯光、水泵、风扇、空调（IR）等。</p>
+</li>
+</ul>
+<h4 id="功能需求"><a href="#功能需求" class="headerlink" title="功能需求"></a>功能需求</h4><h5 id="移动平台的需求"><a href="#移动平台的需求" class="headerlink" title="移动平台的需求"></a>移动平台的需求</h5><ul>
+<li>移动平台的基础是一个两轮小车的底盘，可以在房间内进行移动，以达到能够递送一些小东西的作用，具体而言，有如下功能需求：<ul>
+<li>水平方向移动</li>
+<li>蔽障</li>
+<li>云台带超声波传感器</li>
+<li>云台带智能终端手机</li>
+<li>小车位置定位</li>
+<li>携带少量物品</li>
+<li>远程控制</li>
+<li>移动调速</li>
+<li>声音检测</li>
+<li>感知人</li>
+<li>信号传输</li>
+</ul>
+</li>
+<li>还有一些更高级一些的功能需要思考，例如：<ul>
+<li>语音识别</li>
+<li>图像识别</li>
+<li>视频采集</li>
+</ul>
+</li>
+</ul>
+<h4 id="需要的材料及软件"><a href="#需要的材料及软件" class="headerlink" title="需要的材料及软件"></a>需要的材料及软件</h4><ul>
+<li>电子元件及材料：<ul>
+<li><code>arduino UNO r3</code>作为主控板</li>
+<li>两轮小车地盘作为移动平台</li>
+<li>云台作为超声波模块和智能机的方向控制组件</li>
+<li>人体感应模块作为人体运动检测传感器</li>
+<li>声音输入模块作为声音检测（语音输入）传感器</li>
+<li>充电宝作为能源模块</li>
+<li>蓝牙（wifi）模块作为串口数据传输模块</li>
+<li>小喇叭作为音频输出模块</li>
+</ul>
+</li>
+</ul>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><h5 id="各个模块功能测试"><a href="#各个模块功能测试" class="headerlink" title="各个模块功能测试"></a>各个模块功能测试</h5><h6 id="运动模块"><a href="#运动模块" class="headerlink" title="运动模块"></a>运动模块</h6><ul>
+<li>使用两个直流电机，两轮小车底盘，L298N电机驱动模块，5v转9v升压模块升压，红米2WmAh充电宝供电。</li>
+<li>电机带码盘，但暂时没有光电模块，因此采用人工初始调速校准。</li>
+<li>电机驱动连接方式为IN1悬空，IN2接+5v，IN3接+5v，IN4悬空EN1接5，EN2接6。</li>
+<li>上代码：<pre><code>int motoL = 5; //定义左轮胎针脚
+int motoR = 6; //定义右轮胎针脚
+int motoLs = 0; //定义左轮胎速度
+int motoRs = 0; //定义右轮胎速度
+</code></pre></li>
+</ul>
+<p>void setup() {<br>  // put your setup code here, to run once:<br>  Serial.begin(9600);<br>  pinMode(motoL,OUTPUT); //定义左轮胎针脚输出<br>  pinMode(motoR,OUTPUT); //定义右轮胎针脚输出(我总觉得这里的定义没多大用？)</p>
+<p>  analogWrite(motoL,motoLs); //初始化左轮胎速度<br>  analogWrite(motoR,motoRs); //初始化右轮胎速度<br>}</p>
+<p>void loop() {<br>  // put your main code here, to run repeatedly:<br>}</p>
+<pre><code>
+###### 云台模块
+
+* 云台使用SG90作为舵机，旋转范围为0-180°，但买的这个舵机质量一般，0°没有在原位上，大概只能转动160°的样子。
+* 现在仅测试一个舵机（还有一个在路上），由于舵机仅需要一个数字I/O口，因此使用2号针脚。（3号针脚预留给垂直舵机）
+* 上代码：</code></pre><p>#include &lt;Servo.h&gt; //导入Servo库</p>
+<p>int servoHrPin = 2; //定义servo的输出口<br>int servoHrPos = 90; //定义servo初始位置<br>Servo servoHr ; //创建servo实例水平舵机</p>
+<p>void setup() {<br>  // put your setup code here, to run once:<br>  pinMode(servoHrPin,OUTPUT); //定义水平舵机针脚输出模式<br>  servoHr.attach(servoHrPin); //绑定水平舵机针脚<br>  servoHr.write(servoHrPos); //初始化水平舵机位置<br>}</p>
+<p>void loop() {<br>  // put your main code here, to run repeatedly:<br>    for ( byte i = 0; i &lt;= 180; i += 10) {<br>        servoHr.write(i);<br>        delay(50);<br>    }<br>    for (byte i = 180; i &gt;=0; i -= 10){<br>        servoHr.write(i);<br>        delay(50);<br>    }<br>}</p>
+<pre><code>
+###### 人体检测模块
+
+* 这个模块其实应该叫做“热源运动检测模块”，是通过检测红外释热变化输出一个数字信号。因此只有在固定状态下才能测出准确的数据，当模块本身是运动的时候，常出现误判。
+* 该模块仅用一个数字I/O，分配给7号针脚。
+* 上代码：</code></pre><p>byte peo = 7; //定义人体检测针脚<br>bool hasPeo = false; //定义是否有</p>
+<p>void setup() {<br>  // put your setup code here, to run once:<br>  Serial.begin(9600);<br>  pinMode(peo,INPUT); //定义人体检测模块输入模式<br>}</p>
+<p>void loop() {<br>  // put your main code here, to run repeatedly:<br>    hasPeo = digitalRead(peo); //进行人体检测值<br>    Serial.println(hasPeo); //检测输出<br>    delay(50);<br>}</p>
+<pre><code>
+###### 声音检测模块
+
+* 我一开始买的套件的这个声音检测模块，仅能输出数字信号，也就意味着仅能判断是否有声音，已经重新购买能输出模拟量的声音输入模块，因此直接使用A0口作为信号接收口，同时，11口预留给声音输出模块。
+* 上代码：</code></pre><p>byte soundIn = A0; //定义声音输入针脚<br>bool hasSoundIn = false; //定义是否有声音输入</p>
+<p>void setup() {<br>  // put your setup code here, to run once:<br>  Serial.begin(9600);  //设置串口波特率<br>  pinMode(soundIn, INPUT); //定义声音输入模式</p>
+<p>}</p>
+<p>void loop() {<br>  // put your main code here, to run repeatedly:<br>    hasSoundIn = digitalRead(soundIn); //进行声音检测<br>    Serial.println(hasSoundIn); //输出检测结果<br>    delay(50);<br>}</p>
+<pre><code>
+###### 小喇叭模块
+
+* 使用小喇叭8欧0.5W的，使用PMW输出。
+* 分配针脚为10。
+* 一些比较详细的知识可以查看：[arduino+小喇叭制作简易歌曲](http://www.yfrobot.com/thread-2269-1-1.html)。
+* 上代码：</code></pre><p>byte playPin = 10; //定义小喇叭针脚<br>int tune[] = {};  //申明音调数组<br>float tunetime[] = {}; //申明音调时间数组</p>
+<p>void setup() {<br>  // put your setup code here, to run once:<br>  pinMode(playPin,OUTPUT); //定义小喇叭的针脚为输出模式<br>  analogWrite(playPin,0); //初始化小喇叭为不输出状态<br>  int tune[] = {NOTE_G6,NOTE_GH1,NOTE_G7,NOTE_G6,NOTE_G5,NOTE_G6,NOTE_G3,<br>  NOTE_G6,NOTE_G5,NOTE_G6,NOTE_GH1,NOTE_G7,NOTE_GH1,NOTE_G7,NOTE_G6,NOTE_G7,<br>  NOTE_GH1,NOTE_GH1,NOTE_GH2,NOTE_GH3,NOTE_GH3,NOTE_GH3,NOTE_GH3,NOTE_GH2,<br>  NOTE_GH1,NOTE_G7,NOTE_G6,NOTE_G7,NOTE_G5,NOTE_G6,NOTE_GH1,NOTE_G7,NOTE_G6,<br>  NOTE_G5,NOTE_G6,NOTE_G0,NOTE_G0,NOTE_G0,NOTE_G0,NOTE_G0}; //案例音调<br>  float duration[]={1200,800,400,400,400,400,2400,400,400,1200,400,400,200,<br>  200,400,400,2400,400,400,400,400,400,400,1600,400,400,400,400,1600,800,800,<br>  800,400,400,2400,800,800,800,800,800}; //案例时长<br>  int tuneNo = sizeof(tune)/sizeof(tune[0]); //获得音调数组长度<br>  int tuneTiNo = sizeof(duration)/sizeof(duration[0]); //获得时长数组长度<br>  play(playPin,tune,duration,tuneNo); //播放音乐<br>  Serial.println(sizeof(tune)/sizeof(tune[0]));<br>  Serial.println(sizeof(duration)/sizeof(duration[0]));<br>}<br>void loop() {<br>  // put your main code here, to run repeatedly:<br>}<br>void play(int playPin,int *tune,float *tunetime,int tuneNo){ //定义播放函数<br>  for(int i = 0; i &lt; tuneNo; i++){<br>    tone(playPin,tune[i]);<br>    Serial.println(tune[i]);<br>    delay(tunetime[i]);<br>  }<br>  noTone(playPin);<br>  return ;<br>}</p>
+<pre><code>
+###### 温度模块
+
+* 温度传感器使用的是DS18B20，该温度传感器需要连接10k电阻才能使用，(-｡-;)回头再做这个吧
+
+###### 超声测距模块
+
+* 超声测距模块需要有两个IO口，一个用于发送一个trigger信号用于检测，另一个用于接收超声波模块传回的信号。
+* 该模块返回的为高电平信号，电平的时长即时模块从发出超声波到接收到超声波的时长，声音在空气中传播速度为340米每秒，假设接收到的市场为t豪秒，则两者的距离d=0.017t，换个形式，d=t/58（约等于）。
+* trigger应当要输出至少10us的高电平用于触发，分配针脚9。
+* echo分配10。
+* 上代码：</code></pre><p>byte disEcho = 8; //定义超声接收针脚<br>byte disTri = 9;  //定义超声触发针脚<br>float distance ;  //定义距离</p>
+<p>void setup() {<br>  pinMode(disEcho,INPUT); //定义distance信号接收输入模式<br>  pinMode(disTri,OUTPUT); //定义distance触发信号输出模式<br>  digitalWrite(disTri,LOW); //初始化trigger为低电平<br>}</p>
+<p>void loop() {<br>  // put your main code here, to run repeatedly:<br>  distance = dis();<br>  Serial.println(distance);<br>  delay(100);<br>}</p>
+<p>float dis(){ //定义测量距离的函数<br>  digitalWrite(disTri,LOW); //保证初始值无误<br>  delayMicroseconds(2);<br>  digitalWrite(disTri,HIGH); //触发超声测距<br>  delayMicroseconds(13);<br>  digitalWrite(disTri,LOW); //关闭触发<br>  return pulseIn(disEcho,HIGH)/58.0; //返回距离<br>}</p>
+<pre><code>
+#### 逻辑总结（详见9.2日学习记录）
+
+* 仅仅是最基础的代码和组件其实意义不是特别大，因为arduino的库非常丰富，简单的传感器的使用也非常简单。
+
+### 通信方式
+
+#### 蓝牙通信方式
+
+* 先只用蓝牙进行通信，第一阶段调试时用蓝牙调试工具进行调试。第二阶段使用AI2自行设计app进行操作。
+* 蓝牙的使用相对wifi更为简单，指令也比较少，采用HC-05主从一体蓝牙模块（14元），串口通信没有进行软串口操作，直接使用Pin0和Pin1进行串口通信，也没有修改默认密码，因此未操作AT指令。（AT指令部分还是应当做一下试验，改改密码什么的）
+* 蓝牙采用4位pin码，因此安全性相对较弱，暴力破解起来非常简单，数据传输也是直接使用明文传输，信号拦截也不是很难。（去了解蓝牙加密内容，蓝牙防破解等）。因此，在进行蓝牙传输时，最好先使用加密算法一定程度的加密，然后再进行传输，收到串口数据时，也应当用加密后的密文进行传输。
+* 通信过程中，最主要的工作是进行信息预处理，得到能够被识别的指令，以及进行数据传输的格式约定，通常的设备进行数据交换时，多采用JSON的数据格式，但是对于工作内容非常简单的单片机而言，JSON数据相对复杂，解析不大方便。很多人直接使用HEX格式进行通信（甚至电视空调等IR控制也是使用HEX进行通信）。
+* 我的这个项目先使用HEX进行通信，用于实现以下简单的指令，以及数量不多的传感器数据上传。在弄清楚HEX数据交换的使用之后，再去考虑json的实现（有现成的库，也可以尝试自己写解析函数）。
+* 总结能够输入的指令和要输出的数据：
+    - 输入的指令：
+        + 小车左转`指令+转弯速度``1001+01`
+        + 小车右转`指令+转弯速度``1001+02`
+        + 小车速度`指令+速度``1011+0~100`
+        + 小车停下`指令``1012`
+        + 舵机hr转动`指令+角度``1101+0.0-180.0`
+        + 舵机ve转动`指令+角度``1102+0.0-180.0`
+        + 超声测量距离`指令``1201`
+        + 超声雷达模式`指令+角度范围``1202+0.0+180.0+0.0+180.0`
+        + 小车播放指定声音`指令+指定声音``1301+0~5`
+        + 小车播放传入声音`指令+传入声音``1302+0~7(调)+[](音调)+[](节拍)`
+        + 小车打开/关闭灯光`指令+状态``1401+0~F`
+        + 小车检测是否有人`指令``1501`
+        + 小车检测是否有声音`指令``1601`
+        + 小车检测环境温度`指令``1701`
+        + 小车检测环境光照`指令``1801`
+        + 小车检测灯光状态`指令``1901`
+        + 小车初始化状态`指令``2001`
+        + 小车进入休眠模式`指令``2101`
+        + 小车唤醒`指令``2501`
+    - 输出的数据：
+        + 小车附近是否有声音`特征值+结论``1601/1602`
+        + 小车附近是否有人活动`特征值+结论``1501/1502`
+        + 小车附近温度如何`特征值+结论``1701+-20~140`
+        + 小车附近光照如何`特征值+结论``1801+xxx`
+        + 小车某方向上物体的具体距离`特征值+距离``1201/1202/1203...(指定角度)+4.0~xxxx.x`
+        + 小车的运动状态（加装陀螺仪）`特征值+状态``0A01+xxx`
+* 用符号`;`分割不同指令，用`:`分割单一指令的不同参数。
+
+
+
+#### 总结展望
+
+* 整个语音部分可以进行拓展，现阶段存在一些不容易解决的问题：
+    - 语音输入，要能够接收模拟量，并将接收到的数据发送到互联网上，进行语音识别，并根据识别的内容返回一定指令，用于控制物联网设备。
+    - 音频输出，要能够对WMA或MP3进行抽帧解码，并进行播放，这样可以将一些音频存放于服务器中，由arduino进行访问调用。
+* 在控制逻辑上还需要进行细化，很多能进行函数封装的要进行封装，进而使得代码清晰简洁。先使用蓝牙作为控制工具，用手机进行控制调试，再用wifi进行调试。
+* 小喇叭模块，在定义音调和时长时，还可以进行更加简洁地定义方式，C调D调等之间有错1位的关系，调子可以直接写成D1-D7，DH1-DH7，DL1-DL7三个音阶，时长可以直接用拍子数定义，1=1拍=800ms，0.5=半拍=400ms，0.25=1/4拍=200ms，0.125=1/8拍=100ms，2=2拍=1600ms，3=3拍=2400拍。（或者按照四分音符为一拍，直接输入4为四分音符，8为8分音符，16为16分音符，2为二分音符，1为全音符。（时长为4*1/n*800ms））。
+* 外部中断在现在的程序中还没有使用，低功耗模式，看门狗唤醒等功能也都未使用，应当在后续完善时添加上。参考资料：[Arduino看门狗的使用方法](https://blog.csdn.net/killerstranger/article/details/79902957)、[重要资料](http://gammon.com.au/power)、[台湾IOT论坛文章](https://swf.com.tw/?p=525)、[定时中断的实现](https://blog.csdn.net/LCtesla/article/details/80555480)、[外部中断和定时器中断](https://blog.csdn.net/qq_39591322/article/details/89155079)。
+* 在进行数据处理或进行逻辑处理时，位操作的效率会比十进制操作的效率高很多，因此要学习位操作的方式以及其特点。位操作具体还有些什么优点我也不是很清楚，需要继续查一下。
+
+&lt;hr /&gt;
+## 一些问题
+
+### 数组传值问题
+
+* 在定义函数需要把数组作为参数传入时，传入的其实是数组的第一个值的地址，因此若在数组内用sizeof()/sizeof()，得到的是1。要遍历数组的值，需要多传入一个参数“数组的长度”，可以在参数传入时用sizeof()进行运算得到。
+* 数组传参传传的是地址，因此可以用数组名，可以用指针，在函数内，根据参数的形式，可以直接用参数名，也可以用取地址符。
+
+### tune()函数的问题
+
+* arduino自带的这个函数，其实质也是一个使用类似于delay()和analogWrite()产生的不同频率的方波，用高频来模拟正余弦波，所以会占用arduino的时钟，也就意味着在播放音频时，是无法进行其他运算的。也就是说，这是一个阻塞的函数。
+* 是否可以通过简单的外部扩展，使得可以在播放声音的时候同时执行其他内容？
+
+## 一些想法
+
+* 除了技术实现以外，在智能家居或者物联网中，我认为有两个方面的能力或知识特别重要，其一，是能根据项目的现实条件，规划特定的设备、协议、元件等，达到整体最低成本（综合考虑开发成本、维护成本、再开发成本等）。其二，是能总结需求，能够从人们的需求角度出发，设计对应的物联网产品，并能在市场上了解到类似物联网产品的优劣势以及产生原因。这两方面，前者需要对物联网开发的框架、技术栈等有非常丰富的了解，后者可以通过专门的分析和比较，自行总结出需求，再加上实践经验等。由于我现在两方面均不具备，所以要达到非常专业的物联网开发水平还是有很长的路要走的，不过现在我可以先从分析现有产品所满足的需求角度，总结一波，然后可以再畅想一波。
+* 可用于尝试的项目：①智能垃圾桶；②智能厨房；③智能上下楼搬运；④智能浇水机；⑤智能农场；⑥智能安防。</code></pre>
+            <hr>
+          </div>
+          <br>
+          <div>
+            
+              <p>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B">编程</a>
+                  &nbsp;
+                
+                  <a class="hover-with-bg" href="/categories/other">other</a>
+                  &nbsp;
+                
+              </p>
+            
+            <p>
+              <i class="iconfont icon-tag"></i>
+              
+                <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0">学习</a>
+              
+                <a class="hover-with-bg" href="/tags/arduino">arduino</a>
+              
+              <span id="/2019/08/30/arduino小车项目/" class="visitors leancloud_visitors" data-flag-title="arduino小车项目尝试">
+                <em id="visitors-text" class="post-meta-item-text"></em>
+                <i id="visitors-count"></i>
+              </span>
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "arduino小车项目尝试&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 60,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $('#post').find('img').each(
+      function () {
+        var _this = $(this);
+        var _src = _this.attr("src");
+        _this.wrap('<a data-fancybox="images" href="' + _src + '" ></a>');
+      }
+    );
+  </script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+
+</body>
+</html>

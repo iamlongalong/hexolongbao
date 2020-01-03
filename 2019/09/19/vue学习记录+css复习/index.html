@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content>
+  <meta name="author" content="longalong">
+  <meta name="keywords" content>
+  <title>vue学习记录+css复习 ~ longbao</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css">
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css">
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css">
+
+
+  
+
+
+
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>longbao</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">Archives</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">Categories</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">Tags</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/default.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              <p class="mt-3">Thursday, September 19th 2019, 2:01 pm</p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="知识记录"><a href="#知识记录" class="headerlink" title="知识记录"></a>知识记录</h2><ul>
+<li>vue中，数据是单项传递的，也就是父组件可以将数据传递给自组件，且父组件数据改变，自组建会跟着改变，要想让自组件的值传递给父组件，可以使用至少两种方式，最简单的是给父组件添加自定义事件，并监听父组件中子组件标签的该事件，<code>&lt;childNode @myEvent=&quot;funName&quot;&gt;&lt;/childNode&gt;</code>，在子组件中使用<code>this.$emit(&#39;funName&#39;,data)</code>触发该事件，并传递值data。第二种在父组件中使用<code>:tdata.sync=&quot;tdata&quot;</code>，这是数据绑定修饰符（具体没有尝试，留作思路之一）。</li>
+<li>vue中，由于computed属性原始只能是一个getter，无法传入参数，但有时候绑定的数据又需要根据一些参数进行确定，因此传递参数就非常必要，此时可以使用<code>function(){return (function(xxx){})}</code>的方式，使computed返回一个带参数输入的函数，进而接收传入的参数。</li>
+</ul>
+<h2 id="我的尝试"><a href="#我的尝试" class="headerlink" title="我的尝试"></a>我的尝试</h2><ul>
+<li>把B站的站点做成完整站点，包括后台数据交互（使用php做后台）。<ul>
+<li>前端使用ajax进行数据交互，把几个mode改成template的形式，template框架再选。</li>
+</ul>
+</li>
+<li>把网易云课堂站点的三个页面全部写出来，并使用nodejs做后台实现部分数据交互。<strong>留了一点点，回头来搞</strong><ul>
+<li>原计划把index、course、category三个页面都做出来，但是category页面真的是太水了，几乎全是cou组件组成的，没有太大的价值，暂时不做。</li>
+<li>数据的话，用爬虫爬取部分数据吧，本来东西也不多。</li>
+<li>nodejs+mysql作为后台web服务器和数据库。</li>
+<li>趁这个机会，把SQL系统性复习一下。</li>
+</ul>
+</li>
+<li>快速模仿3个站点（争取一天做到3个站点的元素）。<ul>
+<li>向物（直接写组件，自己封装简单的组件加载器）</li>
+<li>知乎首页 （用template来写，并使用路由做SPA，后台使用IIS+php的方式）</li>
+<li>玩物志（使用template，做单页，注重对登录、添加购物车、打包订单的逻辑）</li>
+<li>一条官网（使用vue+router+axios+vuex+node+mysql完美实现还原）{做移动端适配}</li>
+<li>唯品会首页（使用jq+template，着重于组件的实现以及布局的准确）</li>
+<li>网易云音乐（用vue+router+axios来写）（什么页面用vuex能体现价值？）（做native app适配）</li>
+</ul>
+</li>
+</ul>
+<h2 id="一些思考"><a href="#一些思考" class="headerlink" title="一些思考"></a>一些思考</h2><ul>
+<li>在用vue写页面的时候，发现与之前用jq或直接用js相比，在事件处理上以及对不常用的元素属性处理上不大方便。vue的事件处理采用的是<code>v-on:xxx=&quot;xxxx;xxxx;&quot;</code>这样的方式，也就是说，对元素绑定事件采用单个元素进行绑定，而对于一些通用的元素绑定时则不大方便，同时vue的数据绑定需要单独使用<code>v-bind:xx=&quot;xxx&quot;</code>的方式进行，而一个元素的属性十分繁杂，不可能把数据都绑定了，因此对于一些不常用的属性，在改变时还是不大方便。例如对非组件的小按钮（或a元素等），放上改变其背景/位置/颜色等，若是使用jq，可以直接使用<code>$(&quot;.xx&quot;).on(&quot;&quot;,fun)</code>，在回调函数中，直接使用<code>$(this).css({xxx})</code>就可以设置css，这种情况下，无论是绑定事件或是改变元素值，都不大方便。</li>
+<li>看了一下他人的方法，都是采用在vue中使用钩子执行额外的js或jq（例如<code>mounted:{xxx}</code>），获取元素可采用vue的内部属性，也可以直接使用js或jq获取，例如<code>$event.target</code>或<code>$ref</code>，从js或jq则使用<code>document.querySelector(&#39;xx&#39;)</code>或<code>document.getElementsByClassname(&quot;xx&quot;)</code>或<code>$(&#39;.xxx&#39;)</code>。</li>
+</ul>
+<h2 id="一些问题"><a href="#一些问题" class="headerlink" title="一些问题"></a>一些问题</h2><ul>
+<li><p>css布局疑难杂症：当父元素为absolute，子元素为多个float时，子元素无法撑开父元素的宽度达到横向布局的效果。使用纯css暂时无解，可使用js操作，或根据页面元素宽度，给一个固定的宽度。</p>
+</li>
+<li><p>布局的几种方式：</p>
+<ul>
+<li>table布局：可以使用table/tr/td然后在td内写内容，或直接使用<code>display: table/table-row/table-cell/table-column/table-row-group;</code>设置div的display。但由于table布局基本过时，选择放弃学习该部分。</li>
+<li>position布局：可以设置position为<code>static/relative/absolute/fixed</code>，用于设置元素在文档中的位置。配合使用<code>top/left/right/bottom</code>以及<code>margin -xxx</code>进行布局。使用较多，也比较简单。</li>
+<li>float布局：设置<code>float: left/right</code>，可使元素脱离文档流，但不脱离文件流，类似于word排版中的文字环绕。float布局最容易出现的问题是父元素高度塌陷，对父元素使用<code>overflow: hidden</code>或者对父元素添加伪类<code>xxx:after {content:&quot;&quot;;display:&quot;block&quot;;clear:&quot;both&quot;}</code>这两种方式解决该问题。（有可能出现父元素为absolute，子元素为多个float的情况，此时无法使用上述方法撑开父元素的宽度）。</li>
+<li>flex布局：通过对父元素使用<code>display:flex/inline-flex;</code>达到对所有子元素进行布局的效果。可以使用<code>flex-direction/flex-wrap =&gt; flex-flow</code>设置元素排列顺序，使用<code>justify-content: flex-start/flex-end/center/space-between/space-around</code>设置元素水平的排列方式，使用<code>align-items: flex-start/flex-end/center/baseline/stretch</code>设置垂直方向的排列方式（align-content设置多行元素）。<a href="https://www.cnblogs.com/dreamperson/p/9367008.html" target="_blank" rel="noopener">flex布局参考</a></li>
+<li>使用@media的响应式布局，使用<code>@media screen and (max-width: 748px) {xxx}</code>的方式进行布局。</li>
+<li>使用一些UI框架进行布局，例如bootstrap/foundation/elementUI这类，虽然底层的实现方式也类似于@media这些，但是在使用过程中的API完全不同，因此也可以说是一种新的布局方式。</li>
+</ul>
+</li>
+</ul>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            
+              <p>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B">编程</a>
+                  &nbsp;
+                
+                  <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF">前端</a>
+                  &nbsp;
+                
+                  <a class="hover-with-bg" href="/categories/%E5%90%8E%E7%AB%AF">后端</a>
+                  &nbsp;
+                
+              </p>
+            
+            <p>
+              <i class="iconfont icon-tag"></i>
+              
+                <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0">学习</a>
+              
+                <a class="hover-with-bg" href="/tags/js">js</a>
+              
+                <a class="hover-with-bg" href="/tags/css">css</a>
+              
+              <span id="/2019/09/19/vue学习记录+css复习/" class="visitors leancloud_visitors" data-flag-title="vue学习记录+css复习">
+                <em id="visitors-text" class="post-meta-item-text"></em>
+                <i id="visitors-count"></i>
+              </span>
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "vue学习记录+css复习&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 60,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $('#post').find('img').each(
+      function () {
+        var _this = $(this);
+        var _src = _this.attr("src");
+        _this.wrap('<a data-fancybox="images" href="' + _src + '" ></a>');
+      }
+    );
+  </script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+
+</body>
+</html>

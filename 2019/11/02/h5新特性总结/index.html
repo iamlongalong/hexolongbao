@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content>
+  <meta name="author" content="longalong">
+  <meta name="keywords" content>
+  <title>h5新特性总结 ~ longbao</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css">
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css">
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css">
+
+
+  
+
+
+
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>longbao</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">Archives</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">Categories</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">Tags</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/default.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              <p class="mt-3">Saturday, November 2nd 2019, 6:53 pm</p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="h5新特性总概括"><a href="#h5新特性总概括" class="headerlink" title="h5新特性总概括"></a>h5新特性总概括</h2><p>h5是新一代的html标准，相对于之前的html4.01而言，增加了很多的新特性，在html的基础上，熟悉h5的新特性，也就能更好地掌握前端开发中的三大支柱之一。</p>
+<p>h5的新特性主要涉及以下几个方面：</p>
+<ul>
+<li>vedio/audio媒体属性</li>
+<li>新增多个表单属性：input[type=”xxx”]</li>
+<li>新增20多个新标签，主要应用于语义化，例如header、footer、aside、article、section、nav等</li>
+<li>加强存储，localStorage和sessionStorage</li>
+<li>新增绘图标签canvas,SVG</li>
+<li>新增事件：drag和drop等</li>
+<li>新增多线程处理worker</li>
+</ul>
+<p>新增的内容主要涵盖以下方面：表单增强、媒体增强、存储增强、画图增强、语义化、多线程。我无法全部都完全掌握，因此对于前面5个内容，我需要掌握，对于后两个（drag、worker），我只能先了解其大意，以后需要使用时再回头学习细节。</p>
+<h2 id="vedio-audio媒体属性"><a href="#vedio-audio媒体属性" class="headerlink" title="vedio/audio媒体属性"></a>vedio/audio媒体属性</h2><p>这个是h5非常非常重要的特性，由于以前的网页是仅有文字和图片的，而视频的播放要靠flash等，兼容性不是很好，因此就在h5中增加了对视频和音频的支持，这也就丰富了网页的媒体形式。</p>
+<p>对于一个vedio来说，我们会关心的事情有：</p>
+<ul>
+<li>视频的源文件在哪里? =&gt; src <code>&lt;source src&gt;</code></li>
+<li>视频的格式是怎样的? =&gt; type = xxx</li>
+<li>视频是否有控制台? =&gt; controls </li>
+<li>视频是否能自动播放? =&gt; autoplay</li>
+<li>视频是否能循环播放? =&gt; loop</li>
+<li>视频能否播放声音还是静音? =&gt; muted</li>
+<li>视频的播放大小有多大? =&gt; width height</li>
+<li>视频格式不支持怎么办? =&gt; source source “your browser xxx”</li>
+<li>视频第一张图片是什么? poster = “xxx”</li>
+<li>视频听不懂是否有字幕? <code>&lt;track type=&quot;subtitle?&quot; src=&quot;./xxx.vtt&quot;&gt;</code></li>
+</ul>
+<p>对于一个音频来说，我们关心的事和视频相比，没有width/height和poster。</p>
+<p>从网页能承载的媒体类型来看，其实这是媒体类型的一次改变，一个网页能承载的媒体有哪些？</p>
+<ul>
+<li>文字 =&gt; html</li>
+<li>图片 =&gt; img</li>
+<li>另一个页面 =&gt; iframe[src=””,sandbox,width=””,height=””]</li>
+<li>视频 =&gt; video</li>
+<li>音频 =&gt; audio</li>
+<li>文档（pdf/txt/…) =&gt; object</li>
+</ul>
+<h2 id="画图增强"><a href="#画图增强" class="headerlink" title="画图增强"></a>画图增强</h2><p>从上一小节的媒体增强顺延下来，就是另一个媒体类型：图像。一般我们使用img标签来嵌入图片，在一些浏览器中，我们还可以使用img[srcset＝“xxx”]来使用媒体查询匹配大小更适配的图片。但这些都是普通的二进制图片，在存储中，需要存储图像每一个点的信息，若是一定大小的图片被放大，则会出现不清晰的情况。而解决这一问题的就是’位图’，在html中，可以使用SVG来绘制二维矢量图。</p>
+<p>SVG是基于xml的，其本身有着一系列的画图的标签，可以使用这些标签来绘制图形，例如<code>&lt;rect x=&quot;&quot; y=&quot;&quot; strack=&quot;&quot; strack-width=&quot;&quot; fill=&quot;&quot;&gt;</code>就可以绘制一个方框。SVG的好处是基于xml也就可以被js调用api来控制，坏处是如果图形过于复杂则其本身就非常复杂，渲染也会非常消耗计算能力。SVG在制作面板数据时比较好用，可以很方便地绘制出基于数据的统计图。</p>
+<p>图形中新增的还有一个canvas，这是一个基于js绘制图形的标签，优点是方便重绘，缺点是文字能力不强。</p>
+<p>具体这两者有什么优劣，光是从网上看的资料并没有太多感受，但是这两者都可以应用于数据可视化，而非常出名的两个数据可视化的库echarts和d3就分别给予这两个标签封装的api，具体有什么差别，等用多了再看把。</p>
+<h2 id="表单增强"><a href="#表单增强" class="headerlink" title="表单增强"></a>表单增强</h2><p>对于一个网页而言，除了要达到最基础的展示信息的作用（各种媒体），还要能够收集用户传回的数据，而收集的数据方式，也就是使用表单元素来进行收集了。在h5中对表单的增强也是非常重要的部分。</p>
+<p>表单元素可以分为两个部分，一个是表单类型，一个是表单属性。表单类型中，增加了input[type＝“email/number/url/date…”]，也就意味着可以直接使用type来控制用户的输入检查。表单属性中，增加了autoFocus/autoComplete/placeHolder/required等。</p>
+<h2 id="数据存储增强"><a href="#数据存储增强" class="headerlink" title="数据存储增强"></a>数据存储增强</h2><p>承接上一部分－表单，有了表单也就有了数据，数据的存储对于网页而言是很重要部分，以前网站的存储可以使用cookie，现在新增了sessionStorage和localStorage两种存储方式。</p>
+<p>cookie，是一个最大为4k的字符串，主要用来存储用户的一些非关键信息，例如简单的喜好等。cookie可以设置失效时间，而且默认会跟着http的每一个请求头发送给服务器，因此用来存放sessionid是比较好的解决“检查是否登录“的方案。</p>
+<p>sessionStorage，大小大致为5M(来自网络),存在的时间就是网页打开的时间，当网页关闭，则数据消失，可以用来存储一些用户配置信息等。</p>
+<p>localStorage，大小大致为5M，除非主动删除，否则一直存在。可以用来存储一些基础数据（网页前置？）</p>
+<p>这三者的使用方面，cookie的调用和处理最不方便，因为其本质就是一个常常的字符串，需要开发者自己通过字符串截取等操作来获取需要的信息。sessionStorage和localStorage有相应的api，相对来说使用更方便，例如xx.setItem=xxx。</p>
+<h2 id="语义化"><a href="#语义化" class="headerlink" title="语义化"></a>语义化</h2><p>h5新增了很多的标签，但这些标签并没有功能上的用处，仅仅是标签名称的不同而已。例如：header、footer、nav、aside、article、section、configure等等。</p>
+<p>语义化的作用有好一些：</p>
+<ul>
+<li>让文档结构更加清晰</li>
+<li>对爬虫更加友好</li>
+<li>阅读障碍人群友好</li>
+</ul>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>以上为对h5新特性的总结，后续还应当对css3进行总结。从实践的角度，应当对cookie存储登录信息进行使用，在项目中，用于登录验证。</p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            
+              <p>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/frontend">frontend</a>
+                  &nbsp;
+                
+                  <a class="hover-with-bg" href="/categories/program">program</a>
+                  &nbsp;
+                
+              </p>
+            
+            <p>
+              <i class="iconfont icon-tag"></i>
+              
+                <a class="hover-with-bg" href="/tags/frontend">frontend</a>
+              
+                <a class="hover-with-bg" href="/tags/js">js</a>
+              
+                <a class="hover-with-bg" href="/tags/html">html</a>
+              
+                <a class="hover-with-bg" href="/tags/%E6%80%BB%E7%BB%93">总结</a>
+              
+              <span id="/2019/11/02/h5新特性总结/" class="visitors leancloud_visitors" data-flag-title="h5新特性总结">
+                <em id="visitors-text" class="post-meta-item-text"></em>
+                <i id="visitors-count"></i>
+              </span>
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "h5新特性总结&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 60,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $('#post').find('img').each(
+      function () {
+        var _this = $(this);
+        var _src = _this.attr("src");
+        _this.wrap('<a data-fancybox="images" href="' + _src + '" ></a>');
+      }
+    );
+  </script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+
+</body>
+</html>

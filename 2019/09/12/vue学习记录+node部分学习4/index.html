@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content>
+  <meta name="author" content="longalong">
+  <meta name="keywords" content>
+  <title>vue学习记录+node部分学习4 ~ longbao</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css">
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css">
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css">
+
+
+  
+
+
+
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>longbao</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">Archives</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">Categories</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">Tags</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/default.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              <p class="mt-3">Thursday, September 12th 2019, 2:01 pm</p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="知识记录"><a href="#知识记录" class="headerlink" title="知识记录"></a>知识记录</h2><h3 id="从前端工具具体内容看vue"><a href="#从前端工具具体内容看vue" class="headerlink" title="从前端工具具体内容看vue"></a>从前端工具具体内容看vue</h3><ul>
+<li>用vue进行开发，很大的一个特点就是<code>组件化</code>，一个核心概念是<code>web应用是由各个组件组成的组件树</code>，因此组件开发是在vue开发过程中最常接触到的内容。要进行组件化开发，首先要做的就是对组件进行抽象，提取公共组件或者私有组件。组件的划分算是一个比较技术性的工作，要如何划分组件才能使组件的复用性和可维护性更高。</li>
+<li>组件划分的方式：<ul>
+<li>功能化组件划分</li>
+<li>区域化组件划分</li>
+<li>待续…</li>
+</ul>
+</li>
+<li>组件划分的细度是一个摆在眼前的问题，组件的作用在于可以一次维护，避免了以往的不同位置的相似部分需要单独维护的麻烦，那么组件究竟要拆到多细呢？我觉得从可维护性和复用性的角度出发，会重复使用的组件需要单独拆分，具有明显内容或功能差别的部分需要单独拆分。举个例子，header，main，footer，nav，sidebar这些就属于具有明显内容差别的部分，再如<code>卡片</code>就是会重复使用的部分。</li>
+<li>没有vue这种MVVM框架之前，前端的工作主要是<code>view</code>，因此最常见的站点形式是一堆的html文件，使用<code>a</code>标签进行页面间的跳转，因此基本不需要太多的js逻辑实现，前端需要会的就是html标签和css样式以及非常基础的基于浏览器对象的js。工作的目的是编写出不同的html模板，再用css调整样式，为了给元素增加一些动作，会使用js操作DOM进行样式变换。而数据产生的逻辑关系大部分由后端完成。web应用是基于<code>模板引擎</code>这种东西实现数据逻辑的，因此php和jsp在后端大放光彩（asp.net也算），数据处理、路由分发等等都是由他们实现的。</li>
+<li>那时的前端工作着眼于<code>内容</code>和<code>效果</code>以及简单的<code>动作</code>，因此跟后端奇怪的数据交互相比，会简单一些。要掌握的工具也比较简单，如html标签；css样式的特点和兼容；<code>js库jquery、zepto、prototype</code>这类着眼于dom操作的库（当然也封装了ajax等非dom操作的函数）；UI库<code>bootstrap、layUI、foundation、jqueryUI、ZUI</code>（当然除了大量的UI组件外，也提供了部分js封装的函数用于插件的运行）；一些常用插件（说库也行），例如<code>datePicker，silder，fontawesome，animate，Echarts</code>等。以上，基本就可以上手工作了。</li>
+<li>当然，前端肯定不仅仅是写一下页面和效果（当然也要看web应用的用处），以前门户网站和展示性网站这类最基础的网站，做的最多的自然是设计布局、填充内容、设计动画这些，很少有跟后端的数据交互，这类网站只要有一个合适的模板，直接套上去改改内容，再加一个CMS基本就可以搞定。但是现在的web应用，都是跟用户之间有着不间断的交互，因此跟后端的交互非常频繁，有了数据交互，前端就要进行数据处理并根据数据执行一些动作，那么这时仅仅是会上面说的那些就显得不足了。这时对于js的掌握程度就显得尤为重要了，所有的动作都是基于js实现的（虽然可能使用一些的库），编写js函数就是重中之重了，因此，学好js尤为重要。</li>
+<li>当nodejs逐渐成熟之后，前端工程师的范围又得到了扩展，可以进入到后端的编程中去。从以前的前后端划分标准来看，前端主要负责客户端的展示和部分逻辑数据处理，后端主要负责业务逻辑处理和数据存储。但从编程的实质来看，若将前端的逻辑数据处理的作用稍稍放大，其实跟后端来处理业务逻辑之间有着部分的可替代性。‘把数据直接交给前端处理’和‘把数据在后端处理好了再交给前端’这两件事情本身就是一个可以相互让步的，因此增强前端的能力，弱化后端部分能力，在模式上是完全行得通的。‘是否这样做’是一个值得思考的问题，需要根据实际项目而定。</li>
+<li>既然js也可以用于后端程序处理，那么在一定程度上，js的使用范围就扩大了，从前端到后端，都可以使用js完成，于是前端工程师们很自然而然的，就会以‘增强自身竞争力’为由学习node。说是学习node，实质是学习常用于后端的一些包，例如<code>http、fs、url、path、express、koa、mysql</code>等，这些包本身是用js封装的一些有特定作用的函数库，调用这些函数就可以进行后端常见的操作，例如读写文件、读取数据库数据、发起http请求或响应请求等。</li>
+<li>到了这一步，基本就可以通过js从头到尾实现一个应用。这之后的学习方向就开始从js脱离出来，而是进行软件逻辑、产品逻辑、代码逻辑这些思考和实践了，要考虑服务端运行环境，以便编写一些自动化的工具（shell编程等）。再之后需要考虑的就是服务器架构，负载均衡等。目前我还想不到更细致的关注点了。</li>
+<li>说了这么多，其实只是让自己捋一下web前端的工作内容，以便自己明确要在近期和中期学习的知识以及要做的实践。</li>
+<li><strong>总结一下</strong>，从工作的角度出发，现在最常见的还是前端负责view，后端由java或php负责逻辑，采用php文件或jsp文件作为html模板文件。前端与后端数据交互多采用ajax，数据格式使用json，收到ajax传回的数据后使用js（或js库）操作dom实现动作。负责最多的部分是html和css，需要编写各类小组件和动画（或其他）效果。需要清楚了解div布局和css兼容。需要熟练使用jquery操作dom以及熟练使用bootstrap组件库进行快速搭建。需要使用js处理一些数据（例如将json数据写到table中）。需要培养自己的美感和简单的页面设计能力（画图估计emmm），需要收集好的有创意的页面布局形式。</li>
+</ul>
+<h3 id="vue知识点"><a href="#vue知识点" class="headerlink" title="vue知识点"></a>vue知识点</h3><ul>
+<li>vue组件，一个web应用可以拆解成多个组件，组件可大可小，因此组件的一个重要部分就是如何拆分，可以按照功能划分，也可以根据视图划分。例如根据视图划分，把一个页面拆成header、maincontent、sidebar、footer几个大的组件，那么对于这个网页来说，这几个大的组件就是顶层组件。从文件上来看，index.html文件就包含了header…这几个标签</li>
+<li>vue组件要传递数据，需要在单组件文件的导出对象中，添加<code>props</code>属性，可以使用数组（最简单的），也可以使用对象（用于规定值类型）。</li>
+</ul>
+<h2 id="我的尝试"><a href="#我的尝试" class="headerlink" title="我的尝试"></a>我的尝试</h2><p>详见netease的项目试用。</p>
+<h2 id="一些问题"><a href="#一些问题" class="headerlink" title="一些问题"></a>一些问题</h2><ul>
+<li>组件中如何让template（v-html）实现组件的调用？是否可行？</li>
+<li>webpack打包后，要如何给vue对象传递数据？ajax回来的数据如何进行赋值？</li>
+<li>webpack打包后，对象如何进行调试？（和2类似）</li>
+<li>全局组件与局部组件的优劣势？为何使用组件？组件的复用如何实现？</li>
+<li>webpack打包时，如何识别vue对象终中绑定的如src这类资源地址？解决如何能使静态资源被打包？</li>
+</ul>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            
+              <p>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B">编程</a>
+                  &nbsp;
+                
+                  <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF">前端</a>
+                  &nbsp;
+                
+                  <a class="hover-with-bg" href="/categories/%E5%90%8E%E7%AB%AF">后端</a>
+                  &nbsp;
+                
+              </p>
+            
+            <p>
+              <i class="iconfont icon-tag"></i>
+              
+                <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0">学习</a>
+              
+                <a class="hover-with-bg" href="/tags/js">js</a>
+              
+              <span id="/2019/09/12/vue学习记录+node部分学习4/" class="visitors leancloud_visitors" data-flag-title="vue学习记录+node部分学习4">
+                <em id="visitors-text" class="post-meta-item-text"></em>
+                <i id="visitors-count"></i>
+              </span>
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "vue学习记录+node部分学习4&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 60,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $('#post').find('img').each(
+      function () {
+        var _this = $(this);
+        var _src = _this.attr("src");
+        _this.wrap('<a data-fancybox="images" href="' + _src + '" ></a>');
+      }
+    );
+  </script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+
+</body>
+</html>

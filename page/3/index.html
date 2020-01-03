@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content>
+  <meta name="author" content="longalong">
+  <meta name="keywords" content>
+  <title>longbao</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css">
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css">
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css">
+
+
+  
+
+
+
+</head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>longbao</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">Archives</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">Categories</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">Tags</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/default.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="fa fa-angle-down scroll-down-arrow"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-md">
+        <div class="py-5 z-depth-3" id="board">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/08/13/nodered学习记录1/">
+        <p class="h4 index-header">nodered学习记录</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">nodered学习记录知识记录
+智能设备与服务器进行通信，有两个方向：①单片机向服务器发送数据；②服务器向单片机发送数据。因此至少有两种通信的方式。
+①单片机向服务器：直接采用socket发送数据，并使用心跳检测机制维持连接，可以将传感器的数据发送到服务器。
+②服务器向单片机：由单片机定时向服务器请求数据，服务器将需要传输的指令存放在某个文件内，在单片机向服务器请求数据时传回。
+③另一种思路：采用长链接？(还不是很懂)
+④再一种思路：采用ssh连接，形成反向隧道，服务器直接将数据发送到某个端口就行，单片机端也直接将数据发送到某个端口。
+
+
+
+一些想法
+先做个小项目尝试一下数据传输的功能。（已完成，~/shtest/test.sh，47.93.218.209:93）
+尝试了在linux下的shell编程，讲真，非常好用。
+用了crontab的命令，用于定时执行命令，用来实现心跳机制还是不错的。
+服务器端使用了php作为数据承接入口，返回的数据使用date()函数，以及使用linux下的date命令，产生日志文件名以及文件内标签。
+服务端可以采用更加高级的结构，以便做更多复杂的事情，之后的</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-08-13&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E7%BC%96%E7%A8%8B">编程</a>&nbsp;
+          
+            <a href="/categories/other">other</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E5%AD%A6%E4%B9%A0">学习</a>&nbsp;
+          
+            <a href="/tags/nodered">nodered</a>&nbsp;
+          
+            <a href="/tags/raspi">raspi</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/08/05/js学习记录-阮一峰教程/">
+        <p class="h4 index-header">js学习记录-阮一峰教程</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">学习笔记
+ES6有6种声明方式： var function let const import class，这在ES5中只有前两种
+ES5中没有块级变量（仅有全局变量和func变量），且所有声明都会被hoisting，因此可能会出现变量污染的情况，在ES6中增加了块级变量（包括函数），因此在{}内进行变量声明，就只能在块内使用。
+浏览器的顶层对象是window，因此全局变量可以使用window.xx，node环境下，顶层对象是global，声明全局变量可以在除了func内使用var就行，要使用全局对象，可以使用global。在浏览器中也可以使用self关键词。为了保持通用性，一般使用this表示全局对象。
+this在全局环境中，返回顶层对象，在模块中，this返回当前模块，在构造函数中（let xx = new func(){this.xxx = xxx;}），this指向新构造的对象；内建函数（例如settimeout）中，this指向顶层对象；在箭头函数中，没有this，因此，当使用this时，会向上一级作用域寻找this。在call和apply函数中，this指向第一个参数。thi</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-08-05&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E7%BC%96%E7%A8%8B">编程</a>&nbsp;
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E5%AD%A6%E4%B9%A0">学习</a>&nbsp;
+          
+            <a href="/tags/js">js</a>&nbsp;
+          
+            <a href="/tags/%E8%A7%84%E5%88%92">规划</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/08/05/前端学习记录-要做的项目/">
+        <p class="h4 index-header">前端学习记录-要做的项目</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">js学习记录学习的内容
+既然是要学习web前端，那么从工作内容上来说，就是写各种网页，实现各种效果，跟后端进行各种数据交互，不论是简单的只管前端页面跳转，还是稍微复杂一点的前端路由页面内跳转，说到底，都是写网页。
+学习一门技术，最基础的自然是理解其原理，能够在自己的领域内用自己的话把技术的原理说清楚；同时，从实践的角度出发，我们学习一门技术的目的，是为了解决某个问题，或者说，是为了更高效地解决某个问题，因此，学习的一大目标，就是提高使用该技术的效率，能够非常快地运用这门，所以，练习、总结、内化，这才是在学习时要做的事情。
+综上两个观点，在学习web前端的技术时，要大量地模仿，模仿n多站点，达到能够非常熟练地使用不同的技术，以实现网站的功能，只有在大量的实践时候，才会发现自己的不足之处。
+
+要做的事情
+把B站的站点做成完整站点，包括后台数据交互（使用php做后台）。
+
+前端使用ajax进行数据交互，把几个mode改成template的形式，template框架再选。
+
+
+把网易云课堂站点的三个页面全部写出来，并使用nodejs做后台实现部分数据交互。【前端页面完成80%】
+
+原计划把in</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-08-05&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E7%BC%96%E7%A8%8B">编程</a>&nbsp;
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E5%AD%A6%E4%B9%A0">学习</a>&nbsp;
+          
+            <a href="/tags/%E8%A7%84%E5%88%92">规划</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/08/04/每日学习规划/">
+        <p class="h4 index-header">近期学习规划-时间与内容</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">学习规划从今天起，就要开始我的疯狂学习计划了，做好时间上的安排，把每个小时甚至每十分钟都利用起来，提高学习的效率，加强学习能力，把技术类知识补上。##　学习内容
+* web前端的各种技术，例如 JS、vue、element、bootstrap、jquery
+* 模仿站点，至少模仿4个站点
+* 自建站点，把博客页面搭建起来，并写学习博客，发表在csdn上和自己的博客系统上。
+* 对学习的每门技术，都要做学习总结，并写成博客。
+* 每天都要写学习规划和总结日记，整理每天的思路，并总结每天的学习成果。
+
+* web后端的部分技术，例如 Mysql、php、node。学习时间规划* 起床 6：30
+* 开始学习时间 8：00
+* 每日持续学习时间 12小时学习方式* 用电脑进行web前端知识和后端知识的学习。
+* 用树莓派进行linux下服务器端的一些知识学习。
+* 用实体纸张进行一些原型设计和总结。</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-08-04&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E7%BC%96%E7%A8%8B">编程</a>&nbsp;
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E5%AD%A6%E4%B9%A0">学习</a>&nbsp;
+          
+            <a href="/tags/%E8%A7%84%E5%88%92">规划</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/08/03/vue学习知识记录/">
+        <p class="h4 index-header">学习vue的知识记录</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">学习vue的一些过程
+vue的webpack文件结构是怎样的？
+基础的文件有 ①package.json，②package-lock.json，③readme.md，④static，⑤src，⑥dist，⑦build，⑧config，⑨node_modules
+依次说明各个文件以及文件夹的作用。
+①package.json。 该项目的包管理配置文件，由npm产生，用于npm下载所需要的依赖包以及项目的基本信息。该json配置的各项内容主要有：name（项目名称）、version（项目版本）、description（项目介绍）、author（作者）、private（是否私密项目），前面都是基础的信息，比较简单，在使用 npm init 的时候就产生了。 接着是比较重要的 script（脚本命令）：这是能在node下运行的js命令，例如 “dev”:”webpack-dev-server –inline –progress –config build/webpack.dev.conf.js” 这是webpack的一个插件”webpack-dev-server”提供的功能，”–config”</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-08-03&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E7%BC%96%E7%A8%8B">编程</a>&nbsp;
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E5%AD%A6%E4%B9%A0">学习</a>&nbsp;
+          
+            <a href="/tags/js">js</a>&nbsp;
+          
+            <a href="/tags/vue">vue</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/08/01/前端学习的思考/">
+        <p class="h4 index-header">前端知识学习思考（重要）</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">引言
+虽然从比较早就开始在接触web前段的知识了（html、css、js、jquery、bootstrap、vue），甚至也接触了一些web后端的知识（php、java、mysql、cmd、linux、IIS等），但现在反观之前的学习成果，深感效率之底下，很多地方都没有认识清楚，认为非常有必要重新学习并整理知识框架。
+按理说，有两个月的学习时间，加上这么多年以来的生活经验，应该是能够对部分技术有较深入的认识，至少能够做出一些东西，并能够总结出一些框架性的东西。但是就我当下能够拿得出手的，可能也只有模仿写了B站的几个静态页面了，可以说层次是非常低了，那么，为什么实际跟预想差了这么多呢？
+
+最严重的问题之一：心志不坚定！
+从开始接触web技术，态度就一直处于摇摆不定的状态，中间一直有各种不大不小的事情，总能让我找到一些看似很合理的借口，例如要写论文啊、要先把CPA的课看一看啊、要锻炼啊、要先搞好生活啊、最近状态不大好啊…… 
+其实说到底，就是心志还不坚定，还没有决定好自己要往哪个方向去发展，要做哪方面的事。一方面，由于自己在生活中遇到了几件不大好处理的事，被这些事压得神经紧张，整天处在压抑</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-08-01&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E7%BC%96%E7%A8%8B">编程</a>&nbsp;
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E5%AD%A6%E4%B9%A0">学习</a>&nbsp;
+          
+            <a href="/tags/js">js</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/07/31/js学习思考/">
+        <p class="h4 index-header">记录js学习思考</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">引言
+从学习开始，最早接触的编程类语言就是javascript，虽说这是一门动态语言，相对一些非常严谨的编程语言来说（比如java），更容易接受和入门。同时，由于是从web前段开始接触到的js，因此开始接触时具有比较好的直观感受，因此，会让人觉得js非常简单。
+但实际上，js的内容非常丰富，完全不止是写一些简单的控制跳转或者动作控制之类的那些内容。毕竟，js作为一门编程语言，是具有了一门编程语言所需要的几乎所有东西，尤其是其面向对象的编程方式，使得其可扩展性非常强，因此，关于“对象”的学习尤其重要。
+由于之前对js的狭隘理解（理解成了简单的浏览器对象的操作），因此重视程度完全不足，加上学习方式还非常鄙陋，想到要做一个什么东西，然后就开始调试型写代码，错了就调，调对了为止，缺少从原理上思考其原因的过程，并且缺少必要的总结，所以脑海中对于js的整体框架非常模糊，认知水平仅仅是停留在了定义一些变量，然后做一些简单的运算，过程中的状态是：缺少什么就赶紧加个什么，然后接着调试型编程。 这是非常有问题的。
+因此，从这之后要改变这种学习的方式，还是那句话，不能用体力上的重复劳动和无效劳动代替大脑的思</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-07-31&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E7%BC%96%E7%A8%8B">编程</a>&nbsp;
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E5%AD%A6%E4%B9%A0">学习</a>&nbsp;
+          
+            <a href="/tags/js">js</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/07/30/js学习记录1/">
+        <p class="h4 index-header">记录js学习过程</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">学习js的第一天基础信息
+学习内容
+
+JS基础教程
+
+
+学习材料
+
+w3schooljs教程
+截至到：browser BOM
+需要学习的材料：菜鸟ES6
+一定要学习的材料：阮一峰书籍
+
+
+
+知识记录
+js跟我同龄的
+console 对象
+该对象不是js内建的对象，而是由浏览器提供，因此不同的浏览器可能方法或属性不一样。
+console的方法中，log()、info()、error()、warn()最常用，可以用于编写易于调试的js程序。
+console的输出方法中，像c语言一样，使用占位符，%s 字符串，%d 整数，%f 浮点数，%c 占位内容为css，将内容渲染输出（可以输出一些有趣的图形啥的）。
+console.group()/.groupend() 用于分组输出，调试时可用。
+console.assert()断言，用于判断assert中的表达式是否为真。
+console.trance() 追踪，每次其所在函数被调用一次，就向控制台输出调用所在函数的函数。可用于追踪调用。
+
+
+js有5种基础数据类型，一种复杂数据类型。前者为：number、string、Boolean、undefi</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-07-30&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E7%BC%96%E7%A8%8B">编程</a>&nbsp;
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E5%AD%A6%E4%B9%A0">学习</a>&nbsp;
+          
+            <a href="/tags/js">js</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/07/30/什么是WSDL/">
+        <p class="h4 index-header">什么是WSDL？</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">什么是WSDL
+web service describe language，是一种用于请求web服务的标准，用xml进行描述， 可以让程序请求web服务
+curl和wsdl是什么关系？
+SOAP 同样是一种用xml的web service标准，可用于向服务器发送相关信息，进行数据请求，可以选择不同的协议。 SOAP是一种协议，用于规定web service需要的参数以及其格式，这个协议还可以规定发送web service请求的协议，例如http协议，而WSDL是一种语言，这种语言可以实现webservice的功能。
+
+</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-07-30&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E7%BC%96%E7%A8%8B">编程</a>&nbsp;
+          
+            <a href="/categories/%E5%89%8D%E7%AB%AF">前端</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E5%AD%A6%E4%B9%A0">学习</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2019/07/29/博客写作规划/">
+        <p class="h4 index-header">对于博客的规划</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">对于博客的规划引言
+基本上所有的大牛都会建议初学者养成写博客的习惯，虽然我也一直告诉自己要养成这样的好习惯，陆陆续续也在往这条路上走，但整体来说，养成习惯的速度有点慢，写博客的感觉还是时有时无。
+这可以从侧面说明我在框架性思考一些知识的时候还是有所欠缺，才在一定层面导致没有写博客的感觉，另一层面，我写博客还经常会存在被其他事物干扰的情况，说明我在写博客时的沉浸式状态还没有完全成型。
+上述两方面都是我在后续的码字过程中需要提升的，达到码字流畅，思路清晰，习惯良好，才能在写博客的时候感受到更多的乐趣。 这样，写代码这件事带给我的乐趣就又多了一项。
+
+博客可以用来做啥
+两个方面的作用，其一，用于整理自己的思路，记录当下解决问题的思路和方法，便于加深对一个事物的认识，或者留作将来的参考；其二，用于交流，把自己的思考总结出来，可以供大家参考和评论，在讨论中提升对事物的更深认识。
+
+博客要怎么写
+先从博客的平台上来说，有两个，一个是CSDN的博客，另一个就是自己的博客站。 现阶段自己的博客数量还不够丰富，因此先在CSDN上发布，然后搭建好自己的博客平台，将来保持在两个平台上均有发布。
+从功能上来讲</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-07-29&nbsp;&nbsp;
+        
+        
+          <i class="iconfont icon-inbox"></i>
+          
+            <a href="/categories/%E7%BC%96%E7%A8%8B">编程</a>&nbsp;
+          &nbsp;
+        
+        
+          <i class="iconfont icon-tag"></i>
+          
+            <a href="/tags/%E5%AD%A6%E4%B9%A0">学习</a>&nbsp;
+          
+            <a href="/tags/%E8%A7%84%E5%88%92">规划</a>&nbsp;
+          
+            <a href="/tags/%E5%8D%9A%E5%AE%A2">博客</a>&nbsp;
+          
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <nav aria-label="index posts navigation">
+    <ul class="pagination pg-blue justify-content-center mt-5">
+      
+      
+        <li class="page-item">
+          <a class="page-link" href="/page/2/#board">Previous</a>
+        </li>
+      
+      
+    </ul>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Hey~ You！<br/><br/> Welcome to longbao！&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 60,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $('#post').find('img').each(
+      function () {
+        var _this = $(this);
+        var _src = _this.attr("src");
+        _this.wrap('<a data-fancybox="images" href="' + _src + '" ></a>');
+      }
+    );
+  </script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+
+</body>
+</html>

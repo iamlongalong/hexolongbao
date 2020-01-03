@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content>
+  <meta name="author" content="longalong">
+  <meta name="keywords" content>
+  <title>记录js学习过程 ~ longbao</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css">
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css">
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css">
+
+
+  
+
+
+
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>longbao</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">Archives</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">Categories</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">Tags</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/default.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              <p class="mt-3">Tuesday, July 30th 2019, 2:01 pm</p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h1 id="学习js的第一天"><a href="#学习js的第一天" class="headerlink" title="学习js的第一天"></a>学习js的第一天</h1><h2 id="基础信息"><a href="#基础信息" class="headerlink" title="基础信息"></a>基础信息</h2><ul>
+<li><p>学习内容</p>
+<ul>
+<li>JS基础教程</li>
+</ul>
+</li>
+<li><p>学习材料</p>
+<ul>
+<li><a href="https://www.w3school.com.cn/js/index.asp" target="_blank" rel="noopener">w3schooljs教程</a></li>
+<li>截至到：<a href="https://www.w3school.com.cn/js/js_window.asp" target="_blank" rel="noopener">browser BOM</a></li>
+<li>需要学习的材料：<a href="https://www.runoob.com/w3cnote_genre/es6" target="_blank" rel="noopener">菜鸟ES6</a></li>
+<li>一定要学习的材料：<a href="http://es6.ruanyifeng.com/#README" target="_blank" rel="noopener">阮一峰书籍</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="知识记录"><a href="#知识记录" class="headerlink" title="知识记录"></a>知识记录</h2><ul>
+<li>js跟我同龄的</li>
+<li>console 对象<ul>
+<li>该对象不是js内建的对象，而是由浏览器提供，因此不同的浏览器可能方法或属性不一样。</li>
+<li>console的方法中，log()、info()、error()、warn()最常用，可以用于编写易于调试的js程序。</li>
+<li>console的输出方法中，像c语言一样，使用占位符，%s 字符串，%d 整数，%f 浮点数，%c 占位内容为css，将内容渲染输出（可以输出一些有趣的图形啥的）。</li>
+<li><code>console.group()/.groupend()</code> 用于分组输出，调试时可用。</li>
+<li><code>console.assert()</code>断言，用于判断assert中的表达式是否为真。</li>
+<li><code>console.trance()</code> 追踪，每次其所在函数被调用一次，就向控制台输出调用所在函数的函数。可用于追踪调用。</li>
+</ul>
+</li>
+<li>js有5种基础数据类型，一种复杂数据类型。前者为：number、string、Boolean、undefined、null；后者为：object。（array 是object）</li>
+<li>var定义变量时可以用逗号分隔。 逗号后可以跨行。</li>
+<li>4+6+”8”==468  （注意这里跟其他语言的对比）</li>
+<li>运算符类型： 数学运算（加减乘除余）、赋值运算(+= -= *=……)、字符串运算、比较运算、位运算、类型运算（typeof、instenceod）、逻辑运算</li>
+<li><code>**</code>表示幂（es6）、 xx in xx的用法（es6）</li>
+<li>this 指向当前函数的拥有者。 例如在函数中使用 this.name 指的是跟函数平级的name属性。</li>
+<li>对象的创建方法2种： ①var xx = new object() 这被称为对象的构造函数、②var xx = {}.</li>
+<li>对象的调用方法2种： ①英文点、②中括号加引号。</li>
+<li>js事件： 鼠标事件（上、下、上下、进、出、动）、键盘事件（上、下、上下）、浏览器事件（加载、关闭）、窗口事件（获得焦点、失去焦点、变化大小）、输入框事件（获得焦点、失去焦点、change）、滚动条事件（滚动）。</li>
+<li>字符串内换行：用反斜杠<code>\</code></li>
+</ul>
+<p><strong>字符串</strong><br>    * 属性：①string.length<br>    * 方法：<br>        - <code>string.indexOf(&quot;&quot;)\lastIndexOf()</code>（没找到就返回-1），search()可以用正则？<br>        - 切割：slice(2,6)3-6的字符，silce(7)第7个字符后的字符，slice(-7)倒数第七个后的字符。substr(3,4)，从第4个开始，切4个字符。<br>        - <code>replace(&quot;&quot;,&quot;&quot;)</code>，用后面替换前面，默认只替换第一个，可以使用正则，不改变原字符串，想改变要用 str = str.replace()。<br>        - <code>.toUpperCase()/.toLowerCase()</code>改变大小写。 <code>.concat()/+</code> 连接字符串<br>        - <code>.trim()</code>删除空格，不改变原字符<br>        - <code>.charAt()</code> 指定下标的字符。（用<code>slice(n,n+1)</code>或者<code>substr(n,1)</code>也可以实现）<br>        - 字符串可以直接用 <code>str[n]</code>访问第n个字符，看起来像数组访问一样。<br>        - <code>.charCodeAt()</code> 该字符的unicode值<br>        - <code>.split(&quot;X&quot;)</code> 用X分割字符串成为一个数组<br>        - <code>.toString()</code> 转变成字符串</p>
+<p><strong>数字</strong><br>    * 方法：<br>        - <code>.toFixed(6)</code> 返回6位小数的字符串<br>        - <code>.toPrecious(4)</code> 返回共4个位的字符串<br>        - <code>.valueOf()</code>和<code>.toString()</code>是一个等级的<br>        - <code>.parseInt()</code>、<code>.parseFloat()</code>转换可识别的数字</p>
+<p><strong>数组</strong><br>    * 创建： <code>var xx = [] 、 var xx = new Array()</code><br>    * 读取： <code>xx[n]</code><br>    * 方法：<br>        - <code>arr.foreach(fun (value, index, array){})</code> 遍历()<br>        - 增减：<code>push()、pop()、shift()、unshift()、xx[xx.length]=&quot;&quot;</code><br>        - 检测： <code>isArray()</code><br>        - join(“*”) 可用<code>*</code>来连接数组各个值<br>        - delete()会产生undefined<br>        - 用splice()来删除或者添加数组的新项，<code>.splice(3,1,&quot;xx1&quot;,&quot;xx2&quot;)</code>，3为开始位置(会直接删除)，1位删除的数量，后面的是要添加的。<br>        - concat()，拼接数组。<br>        - slice()，用于返回切出了一部分后的新数组，slice(3,1)，从3后面开始1个<br>        - sort()，按字母顺序排列。 reverse()，按字母反顺序排列。<br>        - sort(fun(pre,next){return pre-next})，可以进行比值，按数字顺序排列<br>        - 数组的最大最小值，用Math对象，Math.max.apply(arr)<br>        - <code>.map(fun(value, index, array){})</code>，对数组中的每个值进行一次处理，并return一个值。<br>        - .filter() return 用true和false控制是否过滤<br>        - .every() .some() 用于判断部分是否通过条件<br>        - .find() 用于查找符合条件的第一个元素的值<br>        - .indexOf() .lastIndexOf() 类似于字符串的方法。</p>
+<p><strong>日期对象</strong><br>    * 创建：var xx = new Date(); var xx = new Date(“”,””,””)<br>    * 变成字符串： xx.toDateString()。<br>    * 获得时间： D.getFullYear() 、D.getMonth()、D.getDay()、D.getHours()、D.getMinutes……<br>    * 设置时间： D.set…… （同上）</p>
+<p><strong>js加速</strong><br>    * 在循环中少使用对象查询，而是用变量直接代替。<br>    * 尽量减少对dom的不必要获取。<br>    * 减少对不必要中间变量的使用。<br>    * script加载放到页尾。</p>
+<p><strong>json对象</strong><br>    * 方法：<br>        - json.parse()解析json<br>        - json.stringify()转换成文本</p>
+<p><strong>其他</strong><br>    * getter和setter： 主要能够使对象的方法和属性使用同样的语法。</p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            
+              <p>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B">编程</a>
+                  &nbsp;
+                
+                  <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF">前端</a>
+                  &nbsp;
+                
+              </p>
+            
+            <p>
+              <i class="iconfont icon-tag"></i>
+              
+                <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0">学习</a>
+              
+                <a class="hover-with-bg" href="/tags/js">js</a>
+              
+              <span id="/2019/07/30/js学习记录1/" class="visitors leancloud_visitors" data-flag-title="记录js学习过程">
+                <em id="visitors-text" class="post-meta-item-text"></em>
+                <i id="visitors-count"></i>
+              </span>
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "记录js学习过程&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 60,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $('#post').find('img').each(
+      function () {
+        var _this = $(this);
+        var _src = _this.attr("src");
+        _this.wrap('<a data-fancybox="images" href="' + _src + '" ></a>');
+      }
+    );
+  </script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+
+</body>
+</html>

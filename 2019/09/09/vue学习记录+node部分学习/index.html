@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content>
+  <meta name="author" content="longalong">
+  <meta name="keywords" content>
+  <title>vue学习记录+node部分学习 ~ longbao</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css">
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css">
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css">
+
+
+  
+
+
+
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>longbao</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">Archives</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">Categories</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">Tags</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/default.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              <p class="mt-3">Monday, September 9th 2019, 2:01 pm</p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
+<li>和其他库类似，vue可以通过script标签直接嵌入到js文件，这会使得在注册一个vue全局变量，有两个版本，生产版本和开发版本，因此可以使用<code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue&quot;&gt;&lt;/script&gt;</code>或者从自己的文件夹中直接引用。</li>
+<li>但一般来说，我们在使用vue的时候，都是在node环境下的工程化开发，因此直接<code>const vue = require(&quot;vue&quot;)</code>就可以了，然后在js文件中配置vue的相关属性即可；由于vue-cli提供了比较好用的脚手架，例如集成了webpack的、或者集成了elementUI的等等，我们可以更加方便地直接在node中使用<code>vue init webpack</code>等直接生成脚手架。</li>
+<li>但是由于我对vue的基础了解并不深，因此在vue的这次学习过程中，将从最最最基础的vue文件构建开始，逐渐深入到使用webpack等工具对vue进行预处理并使用webpack-devserver进行调试工作。</li>
+</ul>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><ul>
+<li>vue的第一步，初始化，使用<code>let app = new Vue({});</code>，然后就可以在app中添加各种属性，例如最最最基础的<code>app.el = &quot;#app&quot;</code>，这是用于绑定html中的元素，给了vue一个作用的范围。</li>
+<li>既然可以直接通过更改数据而改变dom，那么也就意味着要让数据和dom绑定起来，最简单的文本插值方式<code>\{\{message\}\}</code>就可以与<code>app.data = {message : &quot;hello vue&quot;}</code>建立联系。</li>
+<li>除了文本的插值，我们经常要操作的其实是节点的各种属性，那么就可以在html中使用<code>v-bind：title = &quot;thetitle&quot;</code>的方式与<code>app.data = {thetitle : &quot;this is a title&quot;}</code>建立联系。</li>
+<li>在操作节点属性时，除了要经常定义节点属性的值，有时候还会进行判断，是否需要将这个元素显示出来，这时可以使用<code>v-if = &quot;seen&quot;</code>与<code>app.data = {seen : true/false}</code>进行联系，那么该元素就会根据seen的值为true而显示，false则不显示。（姑且认为与绑定css的display相似，不知道是否有更加有用的地方）。</li>
+<li>在传统写页面时，有一个特别大的烦恼，列表什么的，在编写时非常费事，经常需要单独去定义，或者在js中使用for循环去持续输出，相对比较麻烦，在vue中可以采用<code>v-for = &quot;todo in todos&quot;</code>的形式进行重复项渲染，例如<code>&lt;ul&gt;&lt;li v-for = &quot;todo in todos&quot;&gt;\{\{todo.content\}\}&lt;/li&gt;&lt;/ul&gt;</code>来输出<code>app.data = {todos: [{No:1,content:&quot;learn vue&quot;},{NO:2,content:&quot;eat&quot;},...]}</code>。</li>
+<li>一个页面，除了要展示给用户内容外，还要能够接收用户的输入并产生反馈，因此，处理用户数据输入也是非常重要的一个方面，之前的编程中，我们大都使用<code>onclick=&quot;submit()&quot;</code>来调用函数，然后函数中来接收用户输入状态<code>function submit() {let danmu = $(&quot;form input:text&quot;).val(); ...}</code>，使用vue后，可以将数据进行双向绑定，<code>&lt;input type = &quot;text&quot; v-model = &quot;danmu&quot; /&gt;</code>就可以直接和<code>app.data = {damu: &quot;&quot;}</code>进行绑定，无论是改变哪一侧，两边的数据都会改变。</li>
+<li>js的作用说起来无非有两个，一个是接收用户的动作，另一个是根据用户的动作改变浏览器的动作，也就是交互，前面的内容让那个基本都是后者，也就是需要浏览器做些什么。前者在先前的编程中，会使用<code>$(&quot;xxx&quot;).on(&quot;&quot;, function(){})</code>或者使用原生js语句<code>getElementById(&quot;xxx&quot;).addEventLisenter(&quot;xxx&quot;,function(){})</code>这样的方式，而在vue中，可以直接使用<code>&lt;button v-on:click = &quot;submit&quot;&gt;Submit&lt;/button&gt;</code>的方式和<code>app.method = {submit : funtion(){xxx\}\}</code>进行绑定。</li>
+</ul>
+<h2 id="vue的知识点"><a href="#vue的知识点" class="headerlink" title="vue的知识点"></a>vue的知识点</h2><h3 id="基础属性与指令"><a href="#基础属性与指令" class="headerlink" title="基础属性与指令"></a>基础属性与指令</h3><ul>
+<li>插值<ul>
+<li>文本插值。最基础的往html中插入数据的方式是<code>\{\{xxx\}\}</code></li>
+<li>html插值。若想插入的值是html模板，例如<code>&lt;a xx&gt;xxx&lt;/a&gt;</code>，就不能使用双大括号，而要使用v-命令<code>v-html=&quot;xxx&quot;</code>的形式，例如<code>&lt;span v-html=&quot;hei&quot;&gt;&lt;/span&gt;</code>。<em>ps：</em>这看起来就像是template一样，但vue不推荐这样做，原因是可能会遭受xss攻击（暂时不懂），而tempelate最好是采用component的形式。</li>
+<li>有些插值只想使用一次，不希望后面改变，就使用命令<code>v-once</code>，例如<code>&lt;span v-once&gt;\{\{\}\}&lt;/span&gt;</code>。</li>
+<li>插值不仅仅只能绑定app.data中的数据，还能够直接进行运算，例如<code>&lt;span&gt;\{\{number + 1\}\}&lt;/span&gt;</code>或者<code>&lt;span&gt;\{\{message.split(&quot;&quot;)[2]\}\}&lt;/span&gt;</code>或者<code>&lt;span&gt;\{\{ok ? yes : no\}\}&lt;/span&gt;</code>等这样的js语句，但是双大括号中，只能处理单表达式，且都是在沙河中运行的，所以无法定义全局变量等操作。</li>
+</ul>
+</li>
+<li>指令<ul>
+<li>vue的指令都是以<code>v-</code>开头的，例如<code>v-bind/v-on/v-if/v-for/v-html/v-once/v-model</code>等。有些指令需要参数，有些不需要，例如<code>v-bind:title=&quot;xxx&quot;</code>其中这里的title就是参数，而<code>v-if=&quot;seen&quot;</code>就没有参数。</li>
+<li>总结起来，指令可以写成这样的形式<code>v-bind:[attribute]=&quot;xxx&quot;</code>以及<code>v-on:[event]=&quot;xxx&quot;</code>，其中中括号括起来可以用于执行js，例如<code>v-bind:[tt]=&quot;xxx&quot;</code>在data中tt=title的话，那么渲染后为<code>v-bind:title=&quot;xxx&quot;</code>。</li>
+<li>在这些指令中，有两个指令用的特别多，一个是v-on，另一个是v-bind，之前的经验就知道，一个是给元素属性赋值，另一个是给元素添加监听事件，因此这两个指令给了缩写，v-bind的缩写<code>:</code>，v-on的缩写为<code>@</code>。</li>
+</ul>
+</li>
+<li>计算与侦听<ul>
+<li>之前在插值中说过，<code>\{\{ \}\}</code>中可以使用简单的js运算，但是从代码的维护来说，把计算的表达式写到template中似乎有些不妥，至少在读代码的时候看起来会很不自然，因此对于数据的处理，可以直接在vue对象中进行，这就是vue的另一个属性—计算属性computed。</li>
+<li>例如我们想把两个数据male和female加起来，在vue中有这样的数据<code>app.data={male:10,female:20}</code>,<code>app.computed={all: function(){return this.male+this.female\}\}</code>，这样，在template中就可以使用<code>\{\{all\}\}</code>而不是<code>\{\{male+female\}\}</code>的形式。</li>
+<li>这里，computed使用了一个getter的方法，直接返回运算后的结果。另一个是在return中，使用的是this.male，male这个字面量是在data属性代表的对象内的，这样使用为什么可以实现？这需要查阅this指代，以及getter和setter的使用方式。</li>
+<li>上面这个male和female的例子，使用<code>\{\{all\}\}</code>和使用<code>\{\{all()\}\}</code>（前提是把all从computed移到method中去）能达到同样的效果，前者是使用的计算属性，后者是使用的方法调用，两者的差别是前者有缓存，前者是先计算好一个值，多次调用都依然只是一个值，后者是重新计算一次。</li>
+<li>侦听属性是一个可以观测data变化的对象，写法为<code>app.watch={xxx: function(xx){}</code>也就是当xxx数据发生变化时，传入变化后的值xx并执行函数。听着好像很好用，所以vue认为可能会被滥用，说到底，watch始终是一个检查依赖的方法，computed属性也有这样的功能，因此主要用于计算的时候，可以直接用computed属性。</li>
+<li>computed属性中，默认的为getter，但是我们也可以设置setter，<code>app.computed={hei:{get:function(){},set:function(xx)\}\}</code>，这样就可以使用<code>\{\{hei=&quot;xx&quot;\}\}</code>来进行设置。</li>
+</ul>
+</li>
+<li>class绑定<ul>
+<li>前端元素最常用的两个属性应该就数class和style了，因为样式基本都靠这两个属性撑起来了，因此vue也应当对这两个属性的使用提供一些便利。通常来说，属性都可以使用<code>v-bind:</code>或者简写成<code>:</code>来绑定数据，但如果绑定的内容是class，可以使用对象或者数组来传入，作为对class属性的增强。</li>
+<li>例如<code>&lt;div :class=&quot;{alert:isalert,reddy:isred}&quot;&gt;&lt;/div&gt;</code>的方式，在app.data={isalert:false,isred:true},渲染出来就是<code>&lt;div class=&quot;reddy&quot;&gt;&lt;/div&gt;</code>。</li>
+<li>数组的运用：<code>&lt;div class=&quot;[alert,reddy]&quot;&gt;&lt;/div&gt;</code>同时app.data={alert:alert,reddy:reddy}，就会渲染出<code>&lt;div class=&quot;alert reddy&quot;&gt;&lt;/div&gt;</code>。</li>
+<li>所以，对于要判断是否需要给xxclass的时候，就用对象输入，或者用三元表达式+数组，要直接给多个xxclass的时候，就用数组输入。另外，都可以使用computed属性进行比较复杂的class绑定。</li>
+</ul>
+</li>
+<li>style绑定<ul>
+<li>style的对象形式比较好理解了，在jquery.css()传值的时候，也是使用类似的方式，不过这里的对象中的value其实是vue中的data对象的键名或者computed对象的键名，会被转换成键值。</li>
+<li>sytle的数组形式也比较类似，就是传入多个data或computed对象。</li>
+<li>其实为了形式更加简洁易懂，最好还是把style直接写到vue中，例如<code>app.data={sty1:{width:20%,color:#fff...\}\}</code>这种形式。</li>
+</ul>
+</li>
+<li>条件渲染<ul>
+<li>指令包括：<code>v-if/v-else/v-else-if/v-show</code>。其实就是根据一个data值（或者是逻辑运算或computed）确定是否渲染，或者是否显示的问题。</li>
+<li>在用v-if和v-else时，如果有相同的元素，会被vue复用，意味着如果有输入框等内容，则v-if和v-else替换时，内容不会被换掉。要想打破这一复用，需要给元素添加不同的属性<code>key = &quot;xxx&quot;</code>。</li>
+<li>v-show和display的样式是一样的，会被渲染进dom，但是不显示。</li>
+</ul>
+</li>
+<li>列表渲染<ul>
+<li>后接9.10vue学习记录</li>
+</ul>
+</li>
+</ul>
+<h2 id="vue的组件化"><a href="#vue的组件化" class="headerlink" title="vue的组件化"></a>vue的组件化</h2><ul>
+<li><code>组件化</code>这个词绝对是值得关注的，不论是做编程的哪个方向，<code>组件化</code>可以让代码的复用性增强，让编程的逻辑更加清晰，在前端中也一样，这是前端的<code>5化（工程化、模块化、组件化、自动化、规范化）</code>趋势中的一个，因此需要重点关注。</li>
+<li>vue中的组件意味着可以使用自定义的标签和自定义的属性，渲染出一个完整的template，并且通过自定义属性把值传递给该template，让其有相应的变化。</li>
+<li>响应的代码为<code>Vue.component(&quot;componName&quot;,{props:[prop],template: &quot;&lt;xx&gt;{prop.hei}&lt;/xx&gt;&quot;})</code>这样就可以直接在html中使用<code>&lt;componName prop ={hei:xxxx,...} &quot;hei&quot;&gt;&lt;/componName&gt;</code>来实现template中的代码。</li>
+</ul>
+<h2 id="vue是什么"><a href="#vue是什么" class="headerlink" title="vue是什么"></a>vue是什么</h2><ul>
+<li>从直观上来看，vue的第一个作用是可以绑定数据，也就意味着我们只需要更改变量的值，DOM渲染则交给vue负责，这与之前使用jquery或者使用原生js编程有着极大的差别，也就是我们不需要使用各种语句去写DOM，不用大量的<code>$(&quot;.xx/#xx/...&quot;).on()/css()/...</code>这样的语句了，这为我们前端减少了大量的重复性工作。不用亲自操作dom的一大优势，就是我们可以更加着眼于业务逻辑的处理，使用js处理各种业务逻辑，在当下看来，这是更具有价值的工作。</li>
+<li>从编程时操作逻辑摆放的位置来看，vue是将操作逻辑或者数据映射直接放在了html的template中，然后再vue对象中将这些操作实现和数据进行归集，之前的编程基本都把操作逻辑和操作实现放在了一起（例如jquery是直接选取元素紧接着就实现操作），vue的这种方式在一定程度上让编程的逻辑更加清晰。但这样做是否一定是有利的？我觉得不一定，jquery的很多函数可以直接复用，在vue的对象化封装下，函数的复用性如何？还需要进一步学习研究。</li>
+<li>vue说起来很符合MVVM的模型，vue在这个模型中，负责vm的部分，M由服务器传来的数据负责，V由浏览器的DOM负责，我对设计模式几乎一窍不通，仅在看java的ssh时了解了一下mvc模式（model-view-controllor），在看node的时候有人提到观察者模式，其他的就一概不知了。后续需要补充这方面知识。</li>
+</ul>
+<p><em>用node建立服务器</em></p>
+<ul>
+<li>综合说明1：要想创建一个web服务器，最基础的需要有①ip地址、②监听端口、③返回内容，这就是一个web服务器最最最简单的需求，至于接收到什么样的请求返回什么样的内容，就是后端程序需要做的事情了。以前的web服务器建立，需要使用IIS、Apache、nigx或者tomcat等web服务器程序，他们各有各的特点，在使用php、java等语言编写后端程序时，这些服务器程序可以很方便地提供服务，其实质，大致也是监听端口、建立连接、过滤数据、转发信息、映射loader、发送内容这类。</li>
+<li>综合说明2：使用node作为后端环境的情况下，不需要上述的服务器程序，而是通过运行js程序，直接监听端口、建立连接、信息传递、信息处理、文件传输等。而这些功能，不再是通过配置文件进行配置，而是被集成到了node的各类模块中，通过调用api进行编程，要建立web服务器，就可以使用下述方法。</li>
+<li>方法1：使用http模块建立web服务器<pre><code>const http = require(&quot;http&quot;);//导入http模块
+let hostName = &#39;127.0.0.1&#39;;//定义hostname，将来可能会用得上
+let port = 80;//定义监听的端口
+</code></pre></li>
+</ul>
+<p>//创建服务器<br>const srv = http.createServer((req,res)=&gt;{<br>    //当接收到消息时，返回头部，第一个参数为状态码，第二个参数为头部（具体内容详见http头部信息）<br>    console.log(req.headers);<br>    res.writeHead(200,{<br>        “content-type”:”text/plain”<br>    });//类似于res.statusCode + res.setHeader(“”,””)<br>    res.write(“hey , you just create a http server !”);//返回对应的内容，可以是字符串，也可以是拼接的数据，或者传输二进制文件等<br>    res.end();//内容传输完毕<br>});<br>srv.listen(port,hostName,()=&gt;{<br> console.log(<code>server is already on , listening port %d</code>,port);<br>});//服务器监听端口</p>
+<pre><code>* 方法2：使用express模块建立web服务器</code></pre><p>const express = require(“express”);<br>const fs = require(“fs”);<br>const url = require(“url”);</p>
+<p>const app = express();<br>const hostName = “127.0.0.1”;<br>let port = 80;</p>
+<p>app.use(express.static(__dirname+”/src”));</p>
+<p>app.get(“*”,(req,res) =&gt; {<br>    console.log(“asking url : %s “,req.path);<br>    console.log(“asking query : “,req.query);<br>    let filename = null;<br>    let pathname = url.parse(req.url).pathname;<br>      //当请求static文件夹时，设置文件返回类型是text/css<br>    let firstDir = pathname &amp;&amp; pathname.split(‘/‘)[2];<br>    console.log(pathname);<br>    console.log(pathname.split(‘/‘));<br>    let ContentType = null;<br>    if (req.path == “/“) {<br>        filename = “./index.html”; //默认为index.html<br>        ContentType = {“Content-Type”:”text/html”};<br>    }else {<br>        filename = “.”+req.path;<br>        ContentType = {“Content-Type”:”text/plain”};<br>    }<br>    console.log(“filename : “,filename);<br>    fs.readFile(filename,(err,data) =&gt; {<br>        if (err) {<br>            console.log(err);<br>            res.send(“something wrong with the file”);<br>        }else {<br>            res.writeHead(200,ContentType)<br>            res.write(data);<br>        }<br>        res.end();<br>    });<br>});</p>
+<p>app.post(“*”,(req,res) =&gt; {<br>    let body = req.body;<br>    console.log(“request parms : “,body);<br>    res.send(“hey you sent a post request !”);<br>});</p>
+<p>app.listen(port,hostName,()=&gt;{<br>    console.log(“server is runing at %s:%s”,hostName,port);<br>});</p>
+<pre><code>* 上述只是用最简单的方式建立了一个监听程序，以及最简单的后端路由，从node的http文档以及express文档来看，还有非常多的功能，待后续边实践边学习。
+* 在使用
+
+
+## 一些问题
+
+* vue注册全局变量是如何实现的，以及jquery或elementUI在注册一些专有标签和属性时是如何实现的，或许需要查看html的自定义元素与自定义属性等知识。暂时无法理解，在能够使用vue做项目后再去理解其原理。
+* 在使用express创建服务器时，需要返回文件类型，使用text/html作为html文件类型，使用text/css作为css文件类型，使用text/plain作为字符串等数据传输，也就意味着在写服务端程序时需要先进行判断，那么其他类型例如js、jpg等文件类型又该如何传输呢？MIME类型？除了返回的类型需要判断外，在获知需要返回的类型上也比较麻烦，server2.js的例子中采用的url.parse(req.url).pathname.split(&quot;/&quot;)\[2\]这样复杂的方式，是否有更加简单的呢？例如express-static？</code></pre>
+            <hr>
+          </div>
+          <br>
+          <div>
+            
+              <p>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B">编程</a>
+                  &nbsp;
+                
+                  <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF">前端</a>
+                  &nbsp;
+                
+                  <a class="hover-with-bg" href="/categories/%E5%90%8E%E7%AB%AF">后端</a>
+                  &nbsp;
+                
+              </p>
+            
+            <p>
+              <i class="iconfont icon-tag"></i>
+              
+                <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0">学习</a>
+              
+                <a class="hover-with-bg" href="/tags/js">js</a>
+              
+              <span id="/2019/09/09/vue学习记录+node部分学习/" class="visitors leancloud_visitors" data-flag-title="vue学习记录+node部分学习">
+                <em id="visitors-text" class="post-meta-item-text"></em>
+                <i id="visitors-count"></i>
+              </span>
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "vue学习记录+node部分学习&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 60,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $('#post').find('img').each(
+      function () {
+        var _this = $(this);
+        var _src = _this.attr("src");
+        _this.wrap('<a data-fancybox="images" href="' + _src + '" ></a>');
+      }
+    );
+  </script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+
+</body>
+</html>

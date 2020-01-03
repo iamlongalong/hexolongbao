@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content>
+  <meta name="author" content="longalong">
+  <meta name="keywords" content>
+  <title>arduino学习记录 ~ longbao</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css">
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css">
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css">
+
+
+  
+
+
+
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>longbao</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">Archives</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">Categories</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">Tags</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/default.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              <p class="mt-3">Wednesday, August 28th 2019, 2:01 pm</p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="一些尝试"><a href="#一些尝试" class="headerlink" title="一些尝试"></a>一些尝试</h2><ul>
+<li>在windows上安装了EMQX，据介绍，这是一个供物联网设备连接传输数据的面板，具体还有些什么功能，需要进行进一步的挖掘，参考资料：<a href="https://github.com/emqx/emqx/blob/master/README-CN.md" target="_blank" rel="noopener">官方github</a>。</li>
+<li>有时候要对服务器的性能进行一些监控，尤其是linux系统的监控，这时可以使用linux-dash这个开源项目，有各个平台的版本（php、node、go），同时发现一个叫做hostmonitor的软件，据介绍可以实现一些比较深度的系统监控，主要是用于运维的检查等等，也可以远程查看，可以试着用一下。在树莓派上使用了一下linux-dash，用起来还不错，可以看一些基础的数据。除了linux-dash，还有一个名气比较大的宝塔面板，安装比较慢啊，用一下试试。参考资料：<a href="https://blog.csdn.net/IMW_MG/article/details/77823573" target="_blank" rel="noopener">在树莓派上安装宝塔面板你</a>、<a href="https://blog.csdn.net/freeking101/article/details/80574847" target="_blank" rel="noopener">好用的windows/linux面板工具</a>。我擦，宝塔面板非常好用啊！</li>
+<li>用树莓派做的远程监控。树莓派自带的有vlc，也带有摄像头插孔，因此直接买了一个便宜的树莓派兼容摄像头（16元左右），用vlc推流到本地端口，再用ssh转发到远程服务器端口，然后再手机上通过vlc就可以进行查看了。由于我国内的服务器是windows系统的，所以还安装了一个freessh的软件，用于在windows下搭建sshd。由于freessh的官方文档没读大懂，因此在配置public—key登录的时候费了很多事，需要注意。之后还要租服务器的话，一定要装linux系统的。虽然这样也能看，但其实不是特别好，本地除了使用vlc推流，还可以使用一些其他的工具，例如motion，可以直接用配置文件来配置，比vlc的命令行简单多了。在内网穿透上，使用ssh直接转发相对来说比较简陋，可以使用那个frp等工具来进行ssh转发的配置，稳定性要高一些。还有播放模式的问题，直接把监控视频源暴露在公网上可以说是非常不安全了，应当有一层密码，最好是能通过页面访问。可以使用mjpg-streamer作为获取摄像头数据并转发的工具（关键是！这个库还能支持openwrt！！是不是意味着路由器就可以插个摄像头搞起来？），可以玩一玩。参考资料：<a href="https://www.jianshu.com/p/c355dc1961b0" target="_blank" rel="noopener">在线视频监控mjpg-streamer</a>、<a href="https://blog.csdn.net/qq_41923622/article/details/88366185" target="_blank" rel="noopener">树莓派 USB摄像头 实现网络监控（ MJPG-Streamer）</a></li>
+</ul>
+<h2 id="一些想法"><a href="#一些想法" class="headerlink" title="一些想法"></a>一些想法</h2><ul>
+<li>使用linux登录微信的方法，在python环境下可以使用“itchat”或者“wxpy”这两个库，在node环境下可以使用“wechaty”库。可以用来做微信机器人，或者说可以用来传送命令，用于控制家中的一些设备。</li>
+<li>为什么要使用微信作为传送命令的媒介呢？主要有两个层面的优势，其一，我们平常使用微信非常频繁，那么在给远程设备发送消息时，用微信也可以免于再打开其他app或网页来得方便。其二，就安全性来说，微信的安全防护措施比我们自己搭建的公网服务器安全措施应当是强很多了，所以大多数情况下，相信微信的安全性还是可以得。其三，转发消息始终需要公网，要不就是自己搭建云端服务器，要不就是使用现成的一些物联网云服务，例如机智云、阿里云物联网、aws等等，简单的一些指令还行，若是数据量比较大，还是比较麻烦的。其四，我了解这方面内容是由于有在安卓机上做微信消息转发的需求，因为安卓机的各方面设备十分齐全，尤其是通信速度和稳定性都非常高，用安卓机做一些家用的小机器人的项目，薅一薅微信的羊毛还是非常省成本的（例如微信视频通话）。</li>
+<li>由于之前购买阿里云的服务器时，安装的是windows系统，但由于windows系统下很多问题都比较奇怪，网上关于windows下安装一些应用的坑都没有教程，因此踩了坑得自己去爬起来，十分痛苦，虽然一开始上手容易，但对于将来的发展来说，是没有太多益处的，这台服务器到期后，国内的服务器是否还要续租就得再考虑了，就算有便宜的服务器可以租，也一定要采用linux系统的。</li>
+</ul>
+<h2 id="一些问题"><a href="#一些问题" class="headerlink" title="一些问题"></a>一些问题</h2><ul>
+<li>arduino作为一个单片机开发板，有两方面的主要作用，其一是“输入传感器发送回来的电平信号”，其二是“给传感器发送电平信号”，这仅仅是针对单片机与传感器的通信，通过I/O口直接发送信号。若要使arduino与其他设备进行通信，则需要使用其他的通信方式，也就是远程通信，最简单的方式有蓝牙通信（ble，12元左右），以及有wifi通信（例如esp8266，9元左右），但这两者的传输距离都非常受限，在近距离（10米内，且无大的阻碍）通信时可用，例如家庭内，尤其是使用网关的，一定要保证信号覆盖全面（使用2.4G信号较好，或者在周边添加信号增强），若是距离再远一些，使用lora传输，可达几百米。（其实wifi也可以达到几百米，需要增加信号放大以及定向，蓝牙在空旷环境下可以达到几十米至一百米），因此，在智能农场等环境下，就可以使用wifi作为场地内通信方式，使用lora作为场地与基地的通信方式（更远则需要使用中继或者直接使用gprs通信，这两者成本都不低。）。可参考文章：<a href="https://blog.csdn.net/lihongzhai/article/details/80381554" target="_blank" rel="noopener">连接到物联网的12种方式</a>。</li>
+<li>物联网的服务器端配置，可以采用EMQ的dashboard，在网上见到有人使用，对各种协议的支持都不错，尤其是MQTT的通信，应当再学习一下该平台有什么用。</li>
+<li>定位系统的使用，之前看到有人使用traccar做定位系统（包含服务器端可客户端，都是开源的），但我自己试用没有配置成功，客户端相对比较简单，通过wireshark抓包能看到数据已经传送到服务器上，传送的也确实是经过编码后的位置信息，但是服务器端在面板上解析不出来位置，而且地图的显示非常非常慢，百度地图还无法显示，不知道是哪里出了问题，可以再分析一下，实在不行，就换一下开源系统。</li>
+</ul>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            
+              <p>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B">编程</a>
+                  &nbsp;
+                
+                  <a class="hover-with-bg" href="/categories/other">other</a>
+                  &nbsp;
+                
+              </p>
+            
+            <p>
+              <i class="iconfont icon-tag"></i>
+              
+                <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0">学习</a>
+              
+                <a class="hover-with-bg" href="/tags/arduino">arduino</a>
+              
+              <span id="/2019/08/28/arduino学习记录1/" class="visitors leancloud_visitors" data-flag-title="arduino学习记录">
+                <em id="visitors-text" class="post-meta-item-text"></em>
+                <i id="visitors-count"></i>
+              </span>
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "arduino学习记录&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 60,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $('#post').find('img').each(
+      function () {
+        var _this = $(this);
+        var _src = _this.attr("src");
+        _this.wrap('<a data-fancybox="images" href="' + _src + '" ></a>');
+      }
+    );
+  </script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+
+</body>
+</html>

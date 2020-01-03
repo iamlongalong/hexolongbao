@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content>
+  <meta name="author" content="longalong">
+  <meta name="keywords" content>
+  <title>js学习记录-阮一峰教程 ~ longbao</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css">
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css">
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css">
+
+
+  
+
+
+
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>longbao</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">Archives</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">Categories</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">Tags</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/default.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              <p class="mt-3">Monday, August 5th 2019, 2:01 pm</p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="学习笔记"><a href="#学习笔记" class="headerlink" title="学习笔记"></a>学习笔记</h2><ul>
+<li>ES6有6种声明方式： var function let const import class，这在ES5中只有前两种</li>
+<li>ES5中没有块级变量（仅有全局变量和func变量），且所有声明都会被hoisting，因此可能会出现变量污染的情况，在ES6中增加了块级变量（包括函数），因此在{}内进行变量声明，就只能在块内使用。</li>
+<li>浏览器的顶层对象是window，因此全局变量可以使用window.xx，node环境下，顶层对象是global，声明全局变量可以在除了func内使用var就行，要使用全局对象，可以使用global。在浏览器中也可以使用self关键词。为了保持通用性，一般使用this表示全局对象。</li>
+<li>this在全局环境中，返回顶层对象，在模块中，this返回当前模块，在构造函数中（let xx = new func(){this.xxx = xxx;}），this指向新构造的对象；内建函数（例如settimeout）中，this指向顶层对象；在箭头函数中，没有this，因此，当使用this时，会向上一级作用域寻找this。在call和apply函数中，this指向第一个参数。<a href="https://blog.csdn.net/weixin_37722222/article/details/81625826" target="_blank" rel="noopener">this的指向总结</a></li>
+<li>解构，可以批量赋值，使用可遍历的数据类型（数组、构造函数），用于解构数组和对象，数组是按照排序依次赋值，而对象没有顺序，因此是按照key值进行赋值。</li>
+<li>对象结构可以重新定义名称，{foo:foo} = {xxx}，这样的形式，因此也可以{foo:name} = {xxx}，前面的foo是用于匹配模式，匹配后面对象的键值，name才是真正被赋值的变量。</li>
+<li>在结构赋值的情况下，括号不能乱用，不然会导致无法识别结构赋值模式，总结来说，两种情况下不能使用括号，模式识别、变量申明，因此在有let的情况下不能使用括号，在function的参数中不能使用括号，不能包裹<code>：</code>符号。</li>
+<li>```用这个符号包裹的内容可以用${}来在字符串中混合js变量以及运算语句，也可以直接接在函数名后，执行后的值作为参数。执行时，先将所有非${xx}的内容转变成数组，且以${xx}为分割，每个${xx}都是一个新的参数。</li>
+<li>在函数中使用参数解构时，不能完全省略传入的参数，即使只传入{}空对象也行，例如， function(x,y=1){xx}，就可以只传入{}，结构时，未找到x，则自动生成一个x = undefined。 可以给整个对象参数赋值一个默认空对象就能避免上述的错误，function({x,y=1}={}){xx}。</li>
+<li>箭头函数的函数体部分，如果只是返回一个对象，则需要加()，否则会被解析成一个代码块，从而报错。</li>
+<li>箭头函数中，没有this、super、arguments、new.target这些关键词，因此也不能使用call、apply、bind的方法改变this的指向，在箭头函数中使用这些方法时，this依然指向上层对象。因此在对象的箭头函数中，不能使用this来试图代指对象内的其他键值，此时this指向的是全局对象。</li>
+<li>由于箭头函数中没有this，因此不能用于构造函数，也不能用于动态使用this的监听事件执行的函数，例如 getElementById(“XX”).addEventLinstener(“click”,()=&gt;{this.classList.toggle(“on”)})，此处的this会指向全局对象。</li>
+<li>拓展运算符，<code>...</code>，类似于rest的逆运算，将一个数组转变成用逗号分隔的参数序列，因此在传参时非常好用，将所有需要的参数放入数组，再使用拓展运算符，就能把所有参数依次放入。</li>
+<li>在使用拓展运算符传参时，不能用括号包裹拓展运算符，会导致解析参数无法错误。</li>
+<li>在ES5中，没有拓展运算符，而是使用apply来实现将数组变成参数传入，例如<code>fn(a,b,c){zzz}; aa=[1,2,3]; fn().apply(null,aa);</code>，这里apply的作用只是将aa从数组转变成参数列表，同样apply可以改变this指向，第一个参数即为this指向的对象（null的位置是this），也可以是一个函数，后面的为该函数的参数。</li>
+<li>apply与call的区别在于，前者的参数使用数组形式，后者的参数使用参数列表形式，例如<code>fn(a,b,c){zzz}; fx().apply(fn,[a,b,c]); fx().call(fn,a,b,c);</code>。</li>
+<li>在定义对象时，用<code>[]</code>可以用于执行表达式，也就意味着可以用一些字面量去给key命名，也可以用于给函数命名，例如：<code>let name = &quot;test&quot;;[name](){xxx};</code>在ES6中，对象中定义函数可以用简单的方式，<code>test(){xxx}</code>，或者直接用箭头函数<code>test = ()=&gt;{xxx}</code>，而不再需要使用<code>test : function(){xxx}</code>。</li>
+<li>需要注意的是，在使用<code>[]</code>给对象中的属性命名时，也就意味着这就是一个属性名，而不再是对象的简单定义<code>{nameValue}</code>，而不能使用<code>{[nameValue]}</code>来表示<code>{[nameValue]:nameValue}</code>。并且，<code>[]</code>中所引用的变量或者表达式不能是对象，否则将转变成<code>[object Object]</code>。</li>
+</ul>
+<h2 id="问题记录"><a href="#问题记录" class="headerlink" title="问题记录"></a>问题记录</h2><ul>
+<li>iterator的实现过程中，next()是如何取到nextindex++的？（闭包的实现方法和原理？在内存中的形式？）</li>
+</ul>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            
+              <p>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/%E7%BC%96%E7%A8%8B">编程</a>
+                  &nbsp;
+                
+                  <a class="hover-with-bg" href="/categories/%E5%89%8D%E7%AB%AF">前端</a>
+                  &nbsp;
+                
+              </p>
+            
+            <p>
+              <i class="iconfont icon-tag"></i>
+              
+                <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0">学习</a>
+              
+                <a class="hover-with-bg" href="/tags/js">js</a>
+              
+                <a class="hover-with-bg" href="/tags/%E8%A7%84%E5%88%92">规划</a>
+              
+              <span id="/2019/08/05/js学习记录-阮一峰教程/" class="visitors leancloud_visitors" data-flag-title="js学习记录-阮一峰教程">
+                <em id="visitors-text" class="post-meta-item-text"></em>
+                <i id="visitors-count"></i>
+              </span>
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "js学习记录-阮一峰教程&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 60,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $('#post').find('img').each(
+      function () {
+        var _this = $(this);
+        var _src = _this.attr("src");
+        _this.wrap('<a data-fancybox="images" href="' + _src + '" ></a>');
+      }
+    );
+  </script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+
+</body>
+</html>

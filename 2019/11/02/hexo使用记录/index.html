@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content>
+  <meta name="author" content="longalong">
+  <meta name="keywords" content>
+  <title>hexo使用记录 ~ longbao</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css">
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css">
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css">
+
+
+  
+
+
+
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>longbao</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">Archives</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">Categories</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">Tags</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/default.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              <p class="mt-3">Saturday, November 2nd 2019, 3:09 pm</p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <p>写博客对于学习it知识来说，是非常有必要的，一方面可以帮助自己梳理和巩固所学知识（由于it知识面广，知识点杂，不梳理的话，遗忘的速度太快），另一方面，这也是it人互帮互助的一种方式（知识分享的精神），因此，写博客，成了一项必备的能力。</p>
+<p>那么，与写博客相对应的，就是拥有一套好用的博客系统，用于管理博客。最基础的博客，就是采用一些大平台的博客系统，例如“博客园”“天涯博客”“新浪博客”等等，在IT领域，还有“CSDN”“电子发烧友”这类平台，但这些博客系统的样式十分固定，没法根据自己的喜好进行调整（主题单一，没有个性）（虽然类似于“博客园”这种可以在一定程度上修改博客样式，但能修改内容非常有限），对于追求“极致”与“个性”的IT从业者们而言，这显然是满足不了需求的，因此，程序员们基本都会采用自己搭建博客系统的方式来写博客。</p>
+<p>博客系统，说到底，其实就是一个CMS，可以把所写的文章，按照一定的流程进行处理，并形成一个完整的站点，因此，大多数CMS都是可以胜任“博客系统”这个角色的，例如“织梦”“帝国”“wordpress”等等。但实际上，由于开源性以及生态圈的活跃性等原因，wordpress作为个人博客的管理系统最为常见，wordpress有很多开源的主题，可供大家使用，搭建起来比较简单，也可以根据自己的喜好进行局部调整（二次开发）。</p>
+<p>但wordpress本身也有很多的问题，例如运行速度慢，占用服务器内存较大等等，这是一个系统逐渐变得庞大不可避免的一个趋势，即使优化已经做到很好了，还是无法解决这个问题。（虽然这对我们这种小用户来说并没有太大影响）。因此，对于只想用来搭建博客系统的用户而言，一个“简洁”“快速”的博客系统会更加受到青睐，而Hexo就是这样一套系统。</p>
+<p>hexo采用的是js开发，运行在node上，（这对于前端开发者而言，就更加亲切了），系统搭建过程和后期维护过程都十分简单，搭建时，只需要<code>npm install hexo-cli -g</code>就可以安装hexo的命令行工具，再使用<code>hexo init [blogsitename] &amp;&amp; npm i</code>就可以新建一个博客站点。使用<code>hexo s/server -p xxx</code>就可以创建一个监听xxx端口的http服务器，然后就可以访问了。</p>
+<p>若想写博客，可以使用<code>hexo new post xxx</code>创建一个有基础信息的md文件，然后编辑这个文件写内容就ok。写完内容，要把博客发表出去，就使用<code>hexo g/generate</code>生成静态网页。若是想把本地的博客内容放到代码托管平台上（github），就可以使用<code>hexo d/deploy</code>来提交页面。</p>
+<p>hexo还有一个非常重要的特性——改变主题非常方便，只需要找到一个中意的主题，在github上clone下来，直接放在themes文件夹内，并在_comfig.yml文件中把theme的值改一下，就可以使用新的主题了。而且网上有很多非常好看的主题，可以在hexo官网themes推荐里面去找一下。</p>
+<p>另外，一个博客系统，最好能够不限制地方就能写博客，如果能直接提供web端的编辑器，就可以远程写博客了，那么，可以使用http://[ip]:[port]/admin的方式使用在线编辑器。</p>
+<p>上述都是hexo最基础的搭建和发布的方式，而hexo经过了3代的更新，还有非常多其他的功能，例如引用图片、引用文字、引用数据等，再例如模板文件等等，都有其相应的使用场景，具体内容，可以直接看hexo的官方文档，写的还是很清楚的。</p>
+<p>那么，对于我而言，当前能使用最基础的md写简单的博客就已经能满足需求了。最重要的，是要经常写博客，把所学的知识用自己的语言重新组织一次，才能融汇贯通啊。</p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            
+              <p>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/frontend">frontend</a>
+                  &nbsp;
+                
+                  <a class="hover-with-bg" href="/categories/program">program</a>
+                  &nbsp;
+                
+              </p>
+            
+            <p>
+              <i class="iconfont icon-tag"></i>
+              
+                <a class="hover-with-bg" href="/tags/blog">blog</a>
+              
+                <a class="hover-with-bg" href="/tags/hexo">hexo</a>
+              
+              <span id="/2019/11/02/hexo使用记录/" class="visitors leancloud_visitors" data-flag-title="hexo使用记录">
+                <em id="visitors-text" class="post-meta-item-text"></em>
+                <i id="visitors-count"></i>
+              </span>
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "hexo使用记录&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 60,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $('#post').find('img').each(
+      function () {
+        var _this = $(this);
+        var _src = _this.attr("src");
+        _this.wrap('<a data-fancybox="images" href="' + _src + '" ></a>');
+      }
+    );
+  </script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+
+</body>
+</html>

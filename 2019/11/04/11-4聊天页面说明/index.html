@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content>
+  <meta name="author" content="longalong">
+  <meta name="keywords" content>
+  <title>11.4聊天页面说明 ~ longbao</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css">
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css">
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css">
+
+
+  
+
+
+
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>longbao</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">Archives</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">Categories</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">Tags</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/default.jpg')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              <p class="mt-3">Monday, November 4th 2019, 10:49 pm</p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="about-this-project"><a href="#about-this-project" class="headerlink" title="about this project"></a>about this project</h2><p>我要写一个聊天页面，包括前端和后端，这是开发的说明。</p>
+<h2 id="at-the-beginning"><a href="#at-the-beginning" class="headerlink" title="at the beginning"></a>at the beginning</h2><p>这个项目的起因十分简单：想要学习nodejs，所以要有实践项目，而这就是一个比较简单易行的项目。所以，这是一个“从零基础”到“刚入门”的练手项目，过程中肯定会有很多很多不规范的地方，从项目目录到代码格式，到实现方法等。但我相信，经过这么一个“从零到一”的过程，我就能理解到nodejs项目中的很多优势和坑，积累很多经验。</p>
+<p>为了把自己的脑子给调动起来，遇到的所有问题都先自己思考解决办法，而不是直接拿现成的框架，例如“自己写项目目录和服务器”而不是“用express框架”。当然，之后一定要重新去审视这些框架，最好重构一下自己的项目，这样能更深刻地理解框架的优点。虽然有点重复造轮子的赶脚，不过话说回来，我们写项目，不都是在造“更符合自身需求”的轮子吗？</p>
+<h2 id="what-is-this"><a href="#what-is-this" class="headerlink" title="what is this?"></a>what is this?</h2><p>这是一个私密聊天工具，用于好友之间的私密聊天，服务器端不保存聊天信息，所有聊天信息只保存在客户端，若客户端的信息删除，则所有信息不可再得到，可以打开“阅后即焚”功能，使所有信息阅读后删除。有用户注册的功能，用户间可以添加好友，只有好友间能够互相发送消息。</p>
+<p>第一版基于web，功能包含：</p>
+<ul>
+<li>用户注册</li>
+<li>用户登录</li>
+<li>添加好友</li>
+<li>发送在线消息</li>
+</ul>
+<p>第二版或后续版本应当包含：</p>
+<ul>
+<li>基于小程序/hybrid</li>
+<li>发送离线消息</li>
+<li>发送图片等媒体资料</li>
+<li>添加群组</li>
+<li>群聊天</li>
+<li>离线消息邮箱提示（微信提示？）</li>
+</ul>
+<h2 id="about-category"><a href="#about-category" class="headerlink" title="about category"></a>about category</h2><p><strong>api</strong>: 用于存放供客户端调用的功能模块<br><strong>doc</strong>: 项目的说明文档，api文档等<br><strong>router</strong>: 用于处理资源请求<br><strong>src</strong>: 存放前端资源，html/js/css/img等静态资源<br><strong>utils</strong>: 用于存放服务器端提炼的公共方法，例如处理路径、获取post数据等等<br><strong>index.js</strong>: 项目后端入口文件<br><strong>index.html</strong>: 项目的首页</p>
+<p>其他都是一些共通的配置文件和模块文件，没有什么好说的。</p>
+<h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><p>整个项目是一个前后端分离的项目。</p>
+<p>前端采用jq最为dom操作的js库，使用基础的html+css进行排版布局，使用ajax与后端通信。</p>
+<p>由于前端界面比较简单，若使用vue等框架则比较臃肿，因此直接采用jq+原生js进行dom操作，数据使用localStorage进行存储，不适用UI框架，而是自定义样式表，写一些基础组件。未采用webpack等模块化打包工具，也是因为项目简单，不使用es6/es7/scss/模块等内容。（因为就目前的规划来看，这个项目基本就是一个单页应用，组件的重复性使用可能性比较小，页面逻辑也比较简单，可以直接用js写在js文件里就行）</p>
+<p>虽然这个项目的前端不采用工程化的开发方式，但工程化的开发确实应该尽快熟悉，尤其是“模块化”“组件化”“webpack打包（自动化）”确实应当要用起来，下一个项目预计就要使用了（“新闻网站”）。</p>
+<p>后端采用node作为服务器，使用基础的url/fs/path/mysql/http等模块进行构建。使用mysql作为数据库进行数据的存储。使用socket.io创建socket连接，用于和客户端的双向通信。</p>
+<p>后端跟前端最大的不一样，在于两个方面：逻辑严密+数据库操作。前端的重点可能在于页面布局和样式+交互逻辑，对于开发来说，逻辑可以不是特别严密，知识点本身也比较分散。而后端的每一步的逻辑都应当是非常紧密的，数据传递时的类型检验非常重要，不然很有可能因为数据格式的问题出错，如果没有单元测试，找bug可能就是一件非常痛苦的事情。</p>
+<h2 id="一些思考"><a href="#一些思考" class="headerlink" title="一些思考"></a>一些思考</h2><p>这是一个全栈项目，涉及项目开发的各个阶段，都是不大熟悉的内容，因此，对于每一个部分，都应当认真思考和总结，由其应当捋清楚各个部分之间的关系，尤其是一些基础库的使用，更应当仔细过一遍并熟练使用。</p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            
+              <p>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/frontend">frontend</a>
+                  &nbsp;
+                
+                  <a class="hover-with-bg" href="/categories/backend">backend</a>
+                  &nbsp;
+                
+                  <a class="hover-with-bg" href="/categories/program">program</a>
+                  &nbsp;
+                
+              </p>
+            
+            <p>
+              <i class="iconfont icon-tag"></i>
+              
+                <a class="hover-with-bg" href="/tags/project">project</a>
+              
+                <a class="hover-with-bg" href="/tags/frontend">frontend</a>
+              
+                <a class="hover-with-bg" href="/tags/backend">backend</a>
+              
+              <span id="/2019/11/04/11-4聊天页面说明/" class="visitors leancloud_visitors" data-flag-title="11.4聊天页面说明">
+                <em id="visitors-text" class="post-meta-item-text"></em>
+                <i id="visitors-count"></i>
+              </span>
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;TOC</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "11.4聊天页面说明&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 60,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $('#post').find('img').each(
+      function () {
+        var _this = $(this);
+        var _src = _this.attr("src");
+        _this.wrap('<a data-fancybox="images" href="' + _src + '" ></a>');
+      }
+    );
+  </script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+
+</body>
+</html>
